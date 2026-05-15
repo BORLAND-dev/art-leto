@@ -4,25 +4,23 @@ import { useNavigate } from "react-router-dom";
 import s from "./WorkshopCyclePage.module.scss";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
-import borovskiyImage3 from '../../static/images/borovskiy3.png'; // ПЕРЕНЕСИ СЮДА
+import page2Image from '../../static/images/19.jpeg';
 
 // ------------------ Types ------------------
-type AgeTab = "7–9 лет" | "10–12 лет";
 interface SessionItem { n: number; title: string; date: string; time?: string; url?: string; }
 interface Presenter { name: string; lines: string[]; photo?: string; }
 
 // ------------------ Consts ------------------
-const IMG_FALLBACK = borovskiyImage3; // ИЗМЕНИ ЭТУ СТРОЧКУ
+const IMG_FALLBACK = page2Image;
 const VISIBLE_ROWS = 6;
 
 // ------------------ Component ------------------
 const WorkshopCyclePage: React.FC = () => {
   const navigate = useNavigate();
-  const [ageTab, setAgeTab] = useState<AgeTab>("7–9 лет");
   const [slide, setSlide] = useState(0);
   const [expanded, setExpanded] = useState(false);
 
-  const images = [borovskiyImage3]; // ИЗМЕНИ ЭТУ СТРОЧКУ
+  const images = [page2Image];
 
   const handleBuyTicket = (url?: string) =>
     window.open(
@@ -31,31 +29,18 @@ const WorkshopCyclePage: React.FC = () => {
       "_blank",
       "noopener,noreferrer"
     );
-const abonementLinks: Record<AgeTab, string> = {
-  "7–9 лет": "https://www.bakhrushinmuseum.ru/buy-tickets/#/buy/abonement/49",
-  "10–12 лет": "https://www.bakhrushinmuseum.ru/buy-tickets/#/buy/abonement/53",
-};
-  const sessions: Record<AgeTab, SessionItem[]> = useMemo(
-  () => ({
-    "7–9 лет": [
-      { n: 1, title: "Знакомство с макетированием: создаем прирезку из бумаги", date: "19.10.2025", time: "11:00", url: "https://www.bakhrushinmuseum.ru/buy-tickets/#/buy/event/7213/2025-10-19/11:00:00" },
-      { n: 2, title: "Выбираем произведение: создаем эскиз и макетных человечков", date: "26.10.2025", time: "11:00", url: "https://www.bakhrushinmuseum.ru/buy-tickets/#/buy/event/7225/2025-10-26/11:00:00" },
-      { n: 3, title: "Придумываем персонажей: рисуем эскиз костюма", date: "02.11.2025", time: "11:00", url: "https://www.bakhrushinmuseum.ru/buy-tickets/#/buy/event/7261/2025-11-02/11:00:00" },
-      { n: 4, title: "Воплощаем идею: создаем интерьерный уголок", date: "09.11.2025", time: "11:00", url: "https://www.bakhrushinmuseum.ru/buy-tickets/#/buy/event/7269/2025-11-09/11:00:00" },
-      { n: 5, title: "Добавляем детали: создаем наполнение для уголка", date: "16.11.2025", time: "11:00", url: "https://www.bakhrushinmuseum.ru/buy-tickets/#/buy/event/7281/2025-11-16/11:00:00" },
-      { n: 6, title: "Завершаем работу: дополняем макет и представляем его зрителям", date: "23.11.2025", time: "11:00", url: "https://www.bakhrushinmuseum.ru/buy-tickets/#/buy/event/7289/2025-11-23/11:00:00" },
+  const sessions: SessionItem[] = useMemo(
+    () => [
+      {
+        n: 1,
+        title: "",
+        date: "09.06.2026",
+        time: "15:00",
+        url: "https://www.bakhrushinmuseum.ru/buy-tickets/#/buy/event/7213/2026-06-09/15:00:00",
+      },
     ],
-    "10–12 лет": [
-      { n: 1, title: "Знакомство с макетированием: создаем прирезку из бумаги", date: "19.10.2025", time: "13:00", url: "https://www.bakhrushinmuseum.ru/buy-tickets/#/buy/event/7217/2025-10-19/13:00:00" },
-      { n: 2, title: "Изучаем масштаб: создаем коробку сцены и стаффаж", date: "26.10.2025", time: "13:00", url: "https://www.bakhrushinmuseum.ru/buy-tickets/#/buy/event/7229/2025-10-26/13:00:00" },
-      { n: 3, title: "Выбираем произведение: создаем эскиз будущего макета", date: "02.11.2025", time: "13:00", url: "https://www.bakhrushinmuseum.ru/buy-tickets/#/buy/event/7265/2025-11-02/13:00:00" },
-      { n: 4, title: "Придумываем персонажей: рисуем эскиз костюма", date: "09.11.2025", time: "13:00", url: "https://www.bakhrushinmuseum.ru/buy-tickets/#/buy/event/7277/2025-11-09/13:00:00" },
-      { n: 5, title: "Создаем декорации: изготавливаем наполнение для коробки сцены", date: "16.11.2025", time: "13:00", url: "https://www.bakhrushinmuseum.ru/buy-tickets/#/buy/event/7285/2025-11-16/13:00:00" },
-      { n: 6, title: "Завершаем работу: дополняем макет и представляем его зрителям", date: "23.11.2025", time: "13:00", url: "https://www.bakhrushinmuseum.ru/buy-tickets/#/buy/event/7297/2025-11-23/13:00:00" },
-    ],
-  }),
-  []
-);
+    []
+  );
 
 
   const presenters: Presenter[] = [
@@ -79,7 +64,7 @@ const abonementLinks: Record<AgeTab, string> = {
     },
   ];
 
-  const all = sessions[ageTab];
+  const all = sessions;
   const hasOverflow = all.length >= VISIBLE_ROWS;
   const visible = expanded ? all : all.slice(0, VISIBLE_ROWS);
 
@@ -138,26 +123,7 @@ const abonementLinks: Record<AgeTab, string> = {
 
         {/* ПРАВАЯ КОЛОНКА */}
         <main className={s.content}>
-          <h1 className={s.title}>ЦИКЛ ВСТРЕЧ «СКАЗОЧНАЯ МОЗАИКА» ЗОЛОТОЙ ПЕТУШОК 5+»</h1>
-
-          {/* ВЫБОР ВОЗРАСТА — центрированные чипы */}
-          <div className={s.scheduleHeader}>
-            <div className={s.controls}>
-              <div className={s.ageFilter} role="tablist" aria-label="Возрастные группы">
-                {(["7–9 лет", "10–12 лет"] as AgeTab[]).map((t) => (
-                  <button
-                    type="button"
-                    key={t}
-                    className={`${s.ageBtn} ${t === ageTab ? s.isActive : ""}`}
-                    aria-pressed={t === ageTab}
-                    onClick={() => { setAgeTab(t); setExpanded(false); }}
-                  >
-                    {t}
-                  </button>
-                ))}
-              </div>
-            </div>
-          </div>
+          <h1 className={s.title}>ЦИКЛ ВСТРЕЧ «СКАЗОЧНАЯ МОЗАИКА» ЗОЛОТОЙ ПЕТУШОК</h1>
 
           <div className={s.description}>
             <p>На занятии мы познакомимся с музыкальным произведением композитора Н. Римского-Корсакова - оперой «Золотой петушок», поговорим об удивительных по красоте декорациях и о роли художника по костюмам. Узнаем, что такое скороговорки и медленноговорки, и даже перевоплотимся в одного из сказочных героев сказки А.С. Пушкина, а также создадим своего собственного Золотого Петушка.
@@ -167,7 +133,6 @@ const abonementLinks: Record<AgeTab, string> = {
           <ul className={s.facts}>
             <li><span className={s.factName}>Продолжительность:</span> 90 минут</li>
             <li><span className={s.factName}>Стоимость:</span> 1300 руб. <span className={s.muted}>(входной билет входит в стоимость)</span></li>
-             <li><span className={s.factName}>Абонемент на 6 занятий:</span> 6000 руб. </li>
             <li><span className={s.factName}>Максимум участников:</span> 10 человек</li>
             <li><span className={s.factName}>Группа:</span>5+ лет </li>
             <li> <span className={s.factName}> Расписание занятий:</span>ВСК 15:00-16:30 </li>
@@ -187,18 +152,9 @@ const abonementLinks: Record<AgeTab, string> = {
               <div className={s.controls}>
                 <div className={s.dropdown}>
                   <button type="button" className={s.ddBtn} aria-haspopup="listbox" aria-expanded="false">
-                    {ageTab}
+                    7–9 лет
                   </button>
                 </div>
-                <div className={s.dropdown}>
-                <button
-                type="button"
-                className={s.ddBtn}
-                onClick={() => handleBuyTicket(abonementLinks[ageTab])}
-                 >
-                КУПИТЬ АБОНЕМЕНТ на занятия
-              </button>
-            </div>
               </div>
             </div>
 
@@ -209,7 +165,7 @@ const abonementLinks: Record<AgeTab, string> = {
                   return (
                     <div key={it.n} className={s.row}>
                       <div className={s.cellInfo}>
-                        <div className={s.lessonTitle}>Занятие №{it.n} — {it.title}</div>
+                        <div className={s.lessonTitle}>Занятие №{it.n}{it.title ? ` — ${it.title}` : ""}</div>
                       </div>
                       <div className={s.cellDate}>
                         {it.date}

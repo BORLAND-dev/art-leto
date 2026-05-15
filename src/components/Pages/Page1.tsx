@@ -4,25 +4,23 @@ import { useNavigate } from "react-router-dom";
 import Header from "../Header/Header";
 import s from "./WorkshopCyclePage.module.scss";
 import Footer from "../Footer/Footer";
-import borovskiyImage from '../../static/images/borovskiy2.jpg'; // ДОБАВЬ ЭТУ СТРОЧКУ
+import page1Image from '../../static/images/9.jpg';
 
 // ------------------ Types ------------------
-type AgeTab = "5–7 лет" | "7–10 лет";
 interface SessionItem { n: number; title: string; date: string; time?: string; url?: string; }
 interface Presenter { name: string; lines: string[]; photo?: string; }
 
 // ------------------ Consts ------------------
-const IMG_FALLBACK = borovskiyImage; // ИЗМЕНИ ЭТУ СТРОЧКУ
+const IMG_FALLBACK = page1Image;
 const VISIBLE_ROWS = 6;
 
 // ------------------ Component ------------------
 const WorkshopCyclePage: React.FC = () => {
   const navigate = useNavigate();
-  const [ageTab, setAgeTab] = useState<AgeTab>("7–10 лет");
   const [slide, setSlide] = useState(0);
   const [expanded, setExpanded] = useState(false);
 
-  const images = [borovskiyImage]; // ИЗМЕНИ ЭТУ СТРОЧКУ
+  const images = [page1Image];
 
   const handleBuyTicket = (url?: string) =>
     window.open(
@@ -32,30 +30,18 @@ const WorkshopCyclePage: React.FC = () => {
       "noopener,noreferrer"
     );
 
-  const sessions: Record<AgeTab, SessionItem[]> = useMemo(
-  () => ({
-  "5–7 лет": [
-    { n: 1, title: "", date: "15.10.2025", time: "15:00", url: "https://www.bakhrushinmuseum.ru/buy-tickets/#/buy/event/7201/2025-10-15/15:00:00" },
-    { n: 2, title: "", date: "29.10.2025", time: "15:00", url: "https://www.bakhrushinmuseum.ru/buy-tickets/#/buy/event/7201/2025-10-29/15:00:00" },
-    { n: 3, title: "", date: "12.11.2025", time: "15:00", url: "https://www.bakhrushinmuseum.ru/buy-tickets/#/buy/event/7201/2025-11-12/15:00:00" },
-    { n: 4, title: "", date: "26.11.2025", time: "15:00", url: "https://www.bakhrushinmuseum.ru/buy-tickets/#/buy/event/7201/2025-11-26/15:00:00" },
-    { n: 5, title: "", date: "03.12.2025", time: "15:00", url: "https://www.bakhrushinmuseum.ru/buy-tickets/#/buy/event/7201/2025-12-03/15:00:00" },
-    { n: 6, title: "", date: "17.12.2025", time: "15:00", url: "https://www.bakhrushinmuseum.ru/buy-tickets/#/buy/event/7201/2025-12-17/15:00:00" },
-    { n: 7, title: "", date: "24.12.2025", time: "15:00", url: "https://www.bakhrushinmuseum.ru/buy-tickets/#/buy/event/7201/2025-12-24/15:00:00" },
-  ],
-  "7–10 лет": [
-    { n: 1, title: "", date: "01.06.2026", time: "16:00", url: "https://www.bakhrushinmuseum.ru/buy-tickets/#/buy/event/7205/2025-10-17/18:00:00" },
-    { n: 2, title: "", date: "31.10.2025", time: "18:00", url: "https://www.bakhrushinmuseum.ru/buy-tickets/#/buy/event/7205/2025-10-31/18:00:00" },
-    { n: 3, title: "", date: "14.11.2025", time: "18:00", url: "https://www.bakhrushinmuseum.ru/buy-tickets/#/buy/event/7205/2025-11-14/18:00:00" },
-    { n: 4, title: "", date: "28.11.2025", time: "18:00", url: "https://www.bakhrushinmuseum.ru/buy-tickets/#/buy/event/7205/2025-11-28/18:00:00" },
-    { n: 5, title: "", date: "05.12.2025", time: "18:00", url: "https://www.bakhrushinmuseum.ru/buy-tickets/#/buy/event/7205/2025-12-05/18:00:00" },
-    { n: 6, title: "", date: "19.12.2025", time: "18:00", url: "https://www.bakhrushinmuseum.ru/buy-tickets/#/buy/event/7205/2025-12-19/18:00:00" },
-    { n: 7, title: "", date: "26.12.2025", time: "18:00", url: "https://www.bakhrushinmuseum.ru/buy-tickets/#/buy/event/7205/2025-12-26/18:00:00" },
-  ],
-}),
-[]
-
-);
+  const sessions: SessionItem[] = useMemo(
+    () => [
+      {
+        n: 1,
+        title: "",
+        date: "01.06.2026",
+        time: "16:00",
+        url: "https://www.bakhrushinmuseum.ru/buy-tickets/#/buy/event/7205/2026-06-01/16:00:00",
+      },
+    ],
+    []
+  );
 
   const presenters: Presenter[] = [
     {
@@ -78,7 +64,7 @@ const WorkshopCyclePage: React.FC = () => {
     },
   ];
 
-  const all = sessions[ageTab];
+  const all = sessions;
   const hasOverflow = all.length > VISIBLE_ROWS;
   const visible = expanded ? all : all.slice(0, VISIBLE_ROWS);
 
@@ -137,26 +123,7 @@ const WorkshopCyclePage: React.FC = () => {
 
         {/* ПРАВАЯ КОЛОНКА */}
         <main className={s.content}>
-          <h1 className={s.title}>С ЧЕГО НАЧИНАЕТСЯ ТЕАТР +5</h1>
-
-          {/* ВЫБОР ВОЗРАСТА — центрированные чипы */}
-          <div className={s.scheduleHeader}>
-            <div className={s.controls}>
-              <div className={s.ageFilter} role="tablist" aria-label="Возрастные группы">
-                {(["5–7 лет", "7–10 лет"] as AgeTab[]).map((t) => (
-                  <button
-                    type="button"
-                    key={t}
-                    className={`${s.ageBtn} ${t === ageTab ? s.isActive : ""}`}
-                    aria-pressed={t === ageTab}
-                    onClick={() => { setAgeTab(t); setExpanded(false); }}
-                  >
-                    {t}
-                  </button>
-                ))}
-              </div>
-            </div>
-          </div>
+          <h1 className={s.title}>С ЧЕГО НАЧИНАЕТСЯ ТЕАТР</h1>
 
           <div className={s.description}>
             <p>Участники мастер-класса узнают, благодаря кому открылся первый в мире театральный музей и почему театр начинается не с вешалки, а с афиши, познакомятся с некоторыми театральными профессиями и попробуют выполнить упражнения по актерскому тренингу на развитие коммуникации, а также своими руками сделают афишу к собственному спектаклю.
@@ -184,7 +151,7 @@ const WorkshopCyclePage: React.FC = () => {
               <div className={s.controls}>
                 <div className={s.dropdown}>
                   <button type="button" className={s.ddBtn} aria-haspopup="listbox" aria-expanded="false">
-                    {ageTab}
+                    7–10 лет
                   </button>
                 </div>
                 <div className={s.dropdown}>

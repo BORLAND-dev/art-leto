@@ -4,25 +4,23 @@ import { useNavigate } from "react-router-dom";
 import s from "./WorkshopCyclePage.module.scss";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
-import borovskiyImage5 from '../../static/images/borovskiy5.jpg'; // ПЕРЕНЕСИ СЮДА
+import page4Image from '../../static/images/7.JPG';
 
 // ------------------ Types ------------------
-type AgeTab = "7–12 лет";
 interface SessionItem { n: number; title: string; date: string; time?: string; url?: string; }
 interface Presenter { name: string; lines: string[]; photo?: string; }
 
 // ------------------ Consts ------------------
-const IMG_FALLBACK = borovskiyImage5; // ИЗМЕНИ ЭТУ СТРОЧКУ
+const IMG_FALLBACK = page4Image;
 const VISIBLE_ROWS = 6;
 
 // ------------------ Component ------------------
 const WorkshopCyclePage: React.FC = () => {
   const navigate = useNavigate();
-  const [ageTab, setAgeTab] = useState<AgeTab>("7–12 лет");
   const [slide, setSlide] = useState(0);
   const [expanded, setExpanded] = useState(false);
 
-  const images = [borovskiyImage5]; // ИЗМЕНИ ЭТУ СТРОЧКУ
+  const images = [page4Image];
 
   const handleBuyTicket = (url?: string) =>
     window.open(
@@ -32,25 +30,18 @@ const WorkshopCyclePage: React.FC = () => {
       "noopener,noreferrer"
     );
 
-  const sessions: Record<AgeTab, SessionItem[]> = useMemo(
-  () => ({
-    "7–12 лет": [
-      { n: 1, title: "", date: "11.10.2025", time: "15:30–16:30", url: "https://www.bakhrushinmuseum.ru/buy-tickets/#/buy/event/7193/2025-10-11/15:30:00" },
-      { n: 2, title: "", date: "18.10.2025", time: "15:30–16:30", url: "https://www.bakhrushinmuseum.ru/buy-tickets/#/buy/event/7193/2025-10-18/15:30:00" },
-      { n: 3, title: "", date: "25.10.2025", time: "15:30–16:30", url: "https://www.bakhrushinmuseum.ru/buy-tickets/#/buy/event/7193/2025-10-25/15:30:00" },
-      { n: 4, title: "", date: "01.11.2025", time: "15:30–16:30", url: "https://www.bakhrushinmuseum.ru/buy-tickets/#/buy/event/7193/2025-11-01/15:30:00" },
-      { n: 5, title: "", date: "08.11.2025", time: "15:30–16:30", url: "https://www.bakhrushinmuseum.ru/buy-tickets/#/buy/event/7193/2025-11-08/15:30:00" },
-      { n: 6, title: "", date: "15.11.2025", time: "15:30–16:30", url: "https://www.bakhrushinmuseum.ru/buy-tickets/#/buy/event/7193/2025-11-15/15:30:00" },
-      { n: 7, title: "", date: "22.11.2025", time: "15:30–16:30", url: "https://www.bakhrushinmuseum.ru/buy-tickets/#/buy/event/7193/2025-11-22/15:30:00" },
-      { n: 8, title: "", date: "29.11.2025", time: "15:30–16:30", url: "https://www.bakhrushinmuseum.ru/buy-tickets/#/buy/event/7193/2025-11-29/15:30:00" },
-      { n: 9, title: "", date: "06.12.2025", time: "15:30–16:30", url: "https://www.bakhrushinmuseum.ru/buy-tickets/#/buy/event/7193/2025-12-06/15:30:00" },
-      { n: 10, title: "", date: "13.12.2025", time: "15:30–16:30", url: "https://www.bakhrushinmuseum.ru/buy-tickets/#/buy/event/7193/2025-12-13/15:30:00" },
-      { n: 11, title: "", date: "20.12.2025", time: "15:30–16:30", url: "https://www.bakhrushinmuseum.ru/buy-tickets/#/buy/event/7193/2025-12-20/15:30:00" },
-      { n: 12, title: "", date: "27.12.2025", time: "15:00–16:00", url: "https://www.bakhrushinmuseum.ru/buy-tickets/#/buy/event/7193/2025-12-27/15:00:00" },
+  const sessions: SessionItem[] = useMemo(
+    () => [
+      {
+        n: 1,
+        title: "",
+        date: "23.06.2026",
+        time: "15:30",
+        url: "https://www.bakhrushinmuseum.ru/buy-tickets/#/buy/event/7193/2026-06-23/15:30:00",
+      },
     ],
-  }),
-  []
-);
+    []
+  );
 
 
   const presenters: Presenter[] = [
@@ -74,7 +65,7 @@ const WorkshopCyclePage: React.FC = () => {
     },
   ];
 
-  const all = sessions[ageTab];
+  const all = sessions;
   const hasOverflow = all.length > VISIBLE_ROWS;
   const visible = expanded ? all : all.slice(0, VISIBLE_ROWS);
 
@@ -133,26 +124,7 @@ const WorkshopCyclePage: React.FC = () => {
 
         {/* ПРАВАЯ КОЛОНКА */}
         <main className={s.content}>
-          <h1 className={s.title}>ЦИКЛ ВСТРЕЧ «СКАЗОЧНАЯ МОЗАИКА» ИВАН-ЦАРЕВИЧ 5+</h1>
-
-          {/* ВЫБОР ВОЗРАСТА — центрированные чипы */}
-          <div className={s.scheduleHeader}>
-            <div className={s.controls}>
-              <div className={s.ageFilter} role="tablist" aria-label="Возрастные группы">
-                {(["7–12 лет"] as AgeTab[]).map((t) => (
-                  <button
-                    type="button"
-                    key={t}
-                    className={`${s.ageBtn} ${t === ageTab ? s.isActive : ""}`}
-                    aria-pressed={t === ageTab}
-                    onClick={() => { setAgeTab(t); setExpanded(false); }}
-                  >
-                    {t}
-                  </button>
-                ))}
-              </div>
-            </div>
-          </div>
+          <h1 className={s.title}>ЦИКЛ ВСТРЕЧ «СКАЗОЧНАЯ МОЗАИКА» ИВАН-ЦАРЕВИЧ</h1>
 
           <div className={s.description}>
             <p>Юные участники познакомятся с волшебными героями сказочной постановки спектакля «Иван-царевич» по пьесе В.И. Родиславского, погрузятся в сюжет русской сказки чтобы понять, какие испытания нужно преодолеть, чтобы победить нечистую силу, попробуют себя в роли театральных костюмеров, сыграют в игру «костюмированный переполох», а также на мастер-классе создадут свой бутафорский меч.
@@ -180,13 +152,8 @@ const WorkshopCyclePage: React.FC = () => {
               <div className={s.controls}>
                 <div className={s.dropdown}>
                   <button type="button" className={s.ddBtn} aria-haspopup="listbox" aria-expanded="false">
-                    {ageTab}
+                    7–12 лет
                   </button>
-                </div>
-                <div className={s.dropdown}>
-                  {/* <button type="button" className={s.ddBtn} onClick={() => handleBuyTicket("#")}>
-                    КУПИТЬ АБОНЕМЕНТ на 6 занятий
-                  </button> */}
                 </div>
               </div>
             </div>
@@ -198,9 +165,7 @@ const WorkshopCyclePage: React.FC = () => {
                   return (
                     <div key={it.n} className={s.row}>
                       <div className={s.cellInfo}>
-                        <div className={s.lessonTitle}>Занятие №{it.n} 
-                          {/* —  */}
-                          {it.title}</div>
+                        <div className={s.lessonTitle}>Занятие №{it.n}{it.title ? ` — ${it.title}` : ""}</div>
                       </div>
                       <div className={s.cellDate}>
                         {it.date}

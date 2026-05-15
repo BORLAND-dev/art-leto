@@ -7,7 +7,6 @@ import Footer from "../Footer/Footer";
 import borovskiyImage4 from '../../static/images/borovskiy4-1.png';
 
 // ------------------ Types ------------------
-type AgeTab = "16+";
 interface SessionItem { n: number; title: string; date: string; time?: string; url?: string; }
 interface Presenter { name: string; lines: string[]; photo?: string; }
 
@@ -18,7 +17,6 @@ const VISIBLE_ROWS = 6;
 // ------------------ Component ------------------
 const WorkshopCyclePage: React.FC = () => {
   const navigate = useNavigate();
-  const [ageTab, setAgeTab] = useState<AgeTab>("16+");
   const [slide, setSlide] = useState(0);
   const [expanded, setExpanded] = useState(false);
 
@@ -33,25 +31,18 @@ const WorkshopCyclePage: React.FC = () => {
       "noopener,noreferrer"
     );
 
-  const sessions: Record<AgeTab, SessionItem[]> = useMemo(
-  () => ({
-    "16+": [
-      { n: 1, title: "Знакомство с макетированием: осваиваем материалы и базовую технику прирезки", date: "12.10.2025", time: "15:30–17:00", url: "https://www.bakhrushinmuseum.ru/buy-tickets/#/buy/event/7197/2025-10-12/15:30:00" },
-      { n: 2, title: "Выбираем фрагмент произведения: изучаем масштаб и создаем стаффаж", date: "19.10.2025", time: "15:30–17:00", url: "https://www.bakhrushinmuseum.ru/buy-tickets/#/buy/event/7221/2025-10-19/15:30:00" },
-      { n: 3, title: "Переходим к чертежам: создаем проекции, сбоку и сверху на миллиметровке", date: "26.10.2025", time: "15:30–17:00", url: "https://www.bakhrushinmuseum.ru/buy-tickets/#/buy/event/7233/2025-10-26/15:30:00" },
-      { n: 4, title: "От чертежа к макету: подбираем материалы и создаем черновую прирезку", date: "02.11.2025", time: "15:30–17:00", url: "https://www.bakhrushinmuseum.ru/buy-tickets/#/buy/event/7313/2025-11-02/15:30:00" },
-      { n: 5, title: "Утверждаем черновик: переходим к работе на чистовом картоне", date: "09.11.2025", time: "15:30–17:00", url: "https://www.bakhrushinmuseum.ru/buy-tickets/#/buy/event/7317/2025-11-09/15:30:00" },
-      { n: 6, title: "Закладываем основу: конструируем главные элементы макета", date: "16.11.2025", time: "15:30–17:00", url: "https://www.bakhrushinmuseum.ru/buy-tickets/#/buy/event/7321/2025-11-16/15:30:00" },
-      { n: 7, title: "Создаем фон: расписываем стены и пол макета", date: "23.11.2025", time: "15:30–17:00", url: "https://www.bakhrushinmuseum.ru/buy-tickets/#/buy/event/7325/2025-11-23/15:30:00" },
-      { n: 8, title: "Наполняем пространство: изготавливаем основные конструкции интерьера", date: "30.11.2025", time: "15:30–17:00", url: "https://www.bakhrushinmuseum.ru/buy-tickets/#/buy/event/7329/2025-11-30/15:30:00" },
-      { n: 9, title: "Добавляем детали: создаем мелкие элементы обстановки", date: "07.12.2025", time: "15:30–17:00", url: "https://www.bakhrushinmuseum.ru/buy-tickets/#/buy/event/7333/2025-12-07/15:30:00" },
-      { n: 10, title: "Придаем цвет и фактуру: расписываем макет и все детали", date: "14.12.2025", time: "15:30–17:00", url: "https://www.bakhrushinmuseum.ru/buy-tickets/#/buy/event/7337/2025-12-14/15:30:00" },
-      { n: 11, title: "Финальные штрихи: добавляем подсветку, текстиль и миниатюрные аксессуары", date: "21.12.2025", time: "15:30–17:00", url: "https://www.bakhrushinmuseum.ru/buy-tickets/#/buy/event/7357/2025-12-21/15:30:00" },
-      { n: 12, title: "Завершение проекта: лакируем элементы и готовимся представлять макет зрителям!", date: "28.12.2025", time: "15:30–17:00", url: "https://www.bakhrushinmuseum.ru/buy-tickets/#/buy/event/7361/2025-12-28/15:30:00" },
+  const sessions: SessionItem[] = useMemo(
+    () => [
+      {
+        n: 1,
+        title: "",
+        date: "18.06.2026",
+        time: "15:30",
+        url: "https://www.bakhrushinmuseum.ru/buy-tickets/#/buy/event/7197/2026-06-18/15:30:00",
+      },
     ],
-  }),
-  []
-);
+    []
+  );
 
   const presenters: Presenter[] = [
     {
@@ -74,7 +65,7 @@ const WorkshopCyclePage: React.FC = () => {
     },
   ];
 
-  const all = sessions[ageTab];
+  const all = sessions;
   const hasOverflow = all.length > VISIBLE_ROWS;
   const visible = expanded ? all : all.slice(0, VISIBLE_ROWS);
 
@@ -133,26 +124,7 @@ const WorkshopCyclePage: React.FC = () => {
 
         {/* ПРАВАЯ КОЛОНКА */}
         <main className={s.content}>
-          <h1 className={s.title}>ЦИКЛ ВСТРЕЧ «ТЕАТРАЛЬНЫЙ КАЛЕЙДОСКОП» ЖИРОФЛЕ-ЖИРОФЛЯ 7+</h1>
-
-          {/* ВЫБОР ВОЗРАСТА — центрированные чипы */}
-          <div className={s.scheduleHeader}>
-            <div className={s.controls}>
-              <div className={s.ageFilter} role="tablist" aria-label="Возрастные группы">
-                {(["16+"] as AgeTab[]).map((t) => (
-                  <button
-                    type="button"
-                    key={t}
-                    className={`${s.ageBtn} ${t === ageTab ? s.isActive : ""}`}
-                    aria-pressed={t === ageTab}
-                    onClick={() => { setAgeTab(t); setExpanded(false); }}
-                  >
-                    {t}
-                  </button>
-                ))}
-              </div>
-            </div>
-          </div>
+          <h1 className={s.title}>ЦИКЛ ВСТРЕЧ «ТЕАТРАЛЬНЫЙ КАЛЕЙДОСКОП» ЖИРОФЛЕ-ЖИРОФЛЯ</h1>
 
           <div className={s.description}>
             <p>На занятии юные участники узнают об уникальном жанре «оперетта» и о профессии «костюмер», познакомятся с загадочной историей двух девушек-близнецов из оперетты Шарля Лекока «Жирофле-Жирофля» и особенностями ее авангардной постановки. В завершении занятия участники пройдут актерский тренинг и мастер-класс по изготовлению двух бантиков.
@@ -162,7 +134,6 @@ const WorkshopCyclePage: React.FC = () => {
           <ul className={s.facts}>
             <li><span className={s.factName}>Продолжительность:</span> 90 минут.</li>
             <li><span className={s.factName}>Стоимость:</span> 1300 руб. <span className={s.muted}>(входной билет входит в стоимость)</span></li>
-            <li><span className={s.factName}>Абонемент на 12 занятий:</span> 15000 руб. </li>
             <li><span className={s.factName}>Максимум участников:</span> 10 человек.</li>
              <li><span className={s.factName}>Группа:</span>7+ </li>
             <li> <span className={s.factName}> Расписание занятий:</span>ЧТ 15:00-16:30 </li>
@@ -181,22 +152,8 @@ const WorkshopCyclePage: React.FC = () => {
               <div className={s.controls}>
                 <div className={s.dropdown}>
                   <button type="button" className={s.ddBtn} aria-haspopup="listbox" aria-expanded="false">
-                    {ageTab}
+                    16+
                   </button>
-                </div>
-                <div className={s.dropdown}>
-                  <button
-                  type="button"
-                  className={s.ddBtn}
-                  onClick={() =>
-                    window.open(
-                      "https://www.bakhrushinmuseum.ru/buy-tickets/#/buy/abonement/45",
-                      "_blank"
-                    )
-                  }
-                >
-                  КУПИТЬ АБОНЕМЕНТ на занятия
-                </button>
                 </div>
               </div>
             </div>
@@ -208,7 +165,7 @@ const WorkshopCyclePage: React.FC = () => {
                   return (
                     <div key={it.n} className={s.row}>
                       <div className={s.cellInfo}>
-                        <div className={s.lessonTitle}>Занятие №{it.n} — {it.title}</div>
+                        <div className={s.lessonTitle}>Занятие №{it.n}{it.title ? ` — ${it.title}` : ""}</div>
                       </div>
                       <div className={s.cellDate}>
                         {it.date}

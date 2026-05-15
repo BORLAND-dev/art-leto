@@ -23,10 +23,14 @@
 .text {
   font-family: 'TT-Norms-Pro-Compact-Regular', sans-serif;
   margin: 0;
-  max-width: 520px;
-  font-size: clamp(18px, 2.2vw, 28px);
-  line-height: 1.35;
+  max-width: 640px;
+  font-size: clamp(16px, 1.8vw, 22px);
+  line-height: 1.45;
   color: #53565A;
+}
+
+.accent {
+  color: #A41930;
 }
 
 @media (max-width: 900px) {

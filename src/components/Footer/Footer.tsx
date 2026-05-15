@@ -10,6 +10,7 @@ import dz from "../../static/icons/dz.svg";
 import rt from "../../static/icons/rt.svg";
 import phone from "../../static/icons/phone.svg";
 import search from "../../static/icons/search.svg";
+import partnerOsdLogo from "../../static/images/logo_osd_color__2024.png";
 
 
 
@@ -38,7 +39,7 @@ const AddressBlock = () => (
   >
     Место проведения:
     <br />
-    Дом-музей М.С. Щепкина
+    Дом-музей М.С. Щепкина (ул. Щепкина, 47, стр. 2, Москва)
     <br />
     Мемориальный музей «Творческая мастерская театрального художника Давида Боровского»
     <br />
@@ -93,8 +94,8 @@ const AddressBlock = () => (
         </a>
         <a href="https://www.osd.ru/" target="_blank" rel="noopener noreferrer">
           <img
-            src="https://www.bakhrushinmuseum.ru/wp-content/uploads/2025/05/partner3.png"
-            alt="Партнёр 3"
+            src={partnerOsdLogo}
+            alt="Партнёр 3 — ОСД"
           />
         </a>
       </div>

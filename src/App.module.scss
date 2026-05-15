@@ -211,6 +211,14 @@
   color: #750808;
 }
 
+.mobileIntro {
+  font-size: 15px;
+  line-height: 1.45;
+  margin: 0;
+  color: #53565A;
+  text-align: center;
+}
+
 // Адаптация для очень маленьких экранов
 @media (max-width: 360px) {
   .mobileTopBar {
@@ -232,6 +240,10 @@
   }
   
   .mobileSubtitle {
+    font-size: 13px;
+  }
+
+  .mobileIntro {
     font-size: 13px;
   }
 }

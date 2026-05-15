@@ -1,14 +1,14 @@
 import dayjs from 'dayjs';
 import { IEvent } from './types';
-import borovskiyImage from './static/images/borovskiy2.jpg';
-import borovskiyImage3 from './static/images/borovskiy3.png';
-import borovskiyImage4 from './static/images/borovskiy4-1.png';
-import borovskiyImage5 from './static/images/borovskiy5.jpg';
+import borovskiyImage from './static/images/9.jpg';
+import borovskiyImage3 from './static/images/19.jpeg';
+import borovskiyImage4 from './static/images/Жирофле.jpg';
+import borovskiyImage5 from './static/images/7.JPG';
 
 const testEvents: IEvent[] = [
 	{
 		id: 1,
-		title: '"С ЧЕГО НАЧИАЕТСЯ ТЕАТР (5+)" ',
+		title: 'С ЧЕГО НАЧИНАЕТСЯ ТЕАТР',
 		ticketLink: '',
 		eventLink: '/Pages/Page1',
 		imageLink: borovskiyImage,
@@ -19,7 +19,7 @@ const testEvents: IEvent[] = [
 
 {
 	id: 2,
-	title: 'ЦИКЛ ВСТРЕЧ «СКАЗОЧНАЯ МОЗАИКА» ЗОЛОТОЙ ПЕТУШОК (5+)',
+	title: 'ЦИКЛ ВСТРЕЧ «СКАЗОЧНАЯ МОЗАИКА» ЗОЛОТОЙ ПЕТУШОК',
 	ticketLink: '',
 	eventLink: '/Pages/Page2',
 	imageLink: borovskiyImage3,
@@ -28,7 +28,7 @@ const testEvents: IEvent[] = [
 },
 	{
 	id: 3,
-	title: 'ЦИКЛ ВСТРЕЧ «ТЕАТРАЛЬНЫЙ КАЛЕЙДОСКОП» ЖИРОФЛЕ-ЖИРОФЛЯ (7+)',
+	title: 'ЦИКЛ ВСТРЕЧ «ТЕАТРАЛЬНЫЙ КАЛЕЙДОСКОП» ЖИРОФЛЕ-ЖИРОФЛЯ',
 	ticketLink: '',
 	eventLink: '/Pages/Page3',
 	imageLink: borovskiyImage4,
@@ -37,7 +37,7 @@ const testEvents: IEvent[] = [
 },
 	{
 	id: 4,
-	title: 'ЦИКЛ ВСТРЕЧ «СКАЗОЧНАЯ МОЗАИКА» ИВАН-ЦАРЕВИЧ (5+)',
+	title: 'ЦИКЛ ВСТРЕЧ «СКАЗОЧНАЯ МОЗАИКА» ИВАН-ЦАРЕВИЧ',
 	ticketLink: '',
 	eventLink: '/Pages/Page4',
 	imageLink: borovskiyImage5,

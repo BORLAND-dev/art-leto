@@ -52,11 +52,8 @@ const MobileHeader = () => {
         </div>
         
         <div className={styles.mobileTitle}>
-          <h1 className={styles.mobileMainTitle}>
-            ТВОРЧЕСКИЕ ПРОГРАММЫ
-          </h1>
-          <p className={styles.mobileSubtitle}>
-            В МАСТЕРСКОЙ ДАВИДА БОРОВСКОГО
+          <p className={styles.mobileIntro}>
+            Чтобы каникулы прошли интересно и с пользой, в рамках летней программы «Арт-лето в Бахрушинском музее» Детский центр разработал два цикла встреч с мастер-классами «Сказочная мозаика» и «Театральный калейдоскоп». Летом скучать точно не придётся! Все в музей!
           </p>
         </div>
       </div>

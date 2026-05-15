@@ -8,7 +8,6 @@ import borovskiyImage4 from '../../static/images/borovskiy4-1.png';
 
 // ------------------ Types ------------------
 interface SessionItem { n: number; title: string; date: string; time?: string; url?: string; }
-interface Presenter { name: string; lines: string[]; photo?: string; }
 
 // ------------------ Consts ------------------
 const IMG_FALLBACK = borovskiyImage4; // ИЗМЕНИ ЭТУ СТРОЧКУ
@@ -43,27 +42,6 @@ const WorkshopCyclePage: React.FC = () => {
     ],
     []
   );
-
-  const presenters: Presenter[] = [
-    {
-      name: "Озолс Элина Олеговна",
-      lines: [
-        "Ведущий программы",
-        "Художник-постановщик театра и кино",
-        "Ранее преподавала дисциплину «Макетирование» в КМТИ им. Вишневской",
-      ],
-       photo: "/Ozols.jpg", 
-    },
-    {
-      name: "Зиновьева Анастасия Олеговна",
-      lines: [
-        "Методист Мемориального музея",
-        "«Творческая мастерская театрального",
-        "художника Давида Боровского»",
-      ],
-      photo: "/Zinoveva.jpg", 
-    },
-  ];
 
   const all = sessions;
   const hasOverflow = all.length > VISIBLE_ROWS;
@@ -135,7 +113,6 @@ const WorkshopCyclePage: React.FC = () => {
             <li><span className={s.factName}>Продолжительность:</span> 90 минут.</li>
             <li><span className={s.factName}>Стоимость:</span> 1300 руб. <span className={s.muted}>(входной билет входит в стоимость)</span></li>
             <li><span className={s.factName}>Максимум участников:</span> 10 человек.</li>
-             <li><span className={s.factName}>Группа:</span>7+ </li>
             <li> <span className={s.factName}> Расписание занятий:</span>ЧТ 15:00-16:30 </li>
           </ul>
 
@@ -206,37 +183,7 @@ const WorkshopCyclePage: React.FC = () => {
           </section>
         </main>
       </div>
-
-      {/* НИЖНИЙ БЛОК — ВЕДУЩИЕ */}
-      <section className={s.leads}>
-        <h2 className={s.leadsTitle}>Ведущие</h2>
-        <div className={s.leadGrid}>
-          {presenters.map((p) => (
-            <article key={p.name} className={s.leadCard}>
-              <div className={s.leadPhoto}>
-                {p.photo ? (
-                  <img
-                      src={p.photo} 
-                    alt={`Фото ведущего: ${p.name}`}
-                    className={s.leadImg}
-                    onError={(e) => ((e.currentTarget as HTMLImageElement).style.visibility = "hidden")}
-                  />
-                ) : (
-                  <div className={s.leadPhInner}>Фото ведущего</div>
-                )}
-              </div>
-              <div className={s.leadText}>
-                <div className={s.leadName}>{p.name}</div>
-                {p.lines.map((line, i) => (
-                  <div key={i} className={s.leadLine}>{line}</div>
-                ))}
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
-
-     <div className={s.footerGap}>
+<div className={s.footerGap}>
   <Footer />
 </div>
     </div>

@@ -1,0 +1,530 @@
+/* WorkshopCyclePage.module.scss — rewritten */
+
+/* ===== Theme tokens ===== */
+:root {
+  --surface-1: #ffffff;
+  --surface-2: #f9fafb;
+  --surface-3: #f3f4f6;
+  --border: #e5e7eb;
+  --text: #1f2937;
+  --muted: #6b7280;
+  --accent: #a31a30;
+  --accent-700: #8c182a;
+  --shadow: 0 10px 28px rgba(0,0,0,.08);
+}
+
+/* ===== Layout ===== */
+
+.wrapper {
+  max-width: 1200px; margin: 0 auto; display: grid; gap: 24px;
+  grid-template-columns: 1fr 1.4fr;
+}
+@media (max-width: 980px) { .wrapper { grid-template-columns: 1fr; } }
+
+/* ===== Head ===== */
+.title { font-size: clamp(22px, 2.2vw, 32px); margin: 0 0 8px; }
+.description { color: var(--text); line-height: 1.6; margin: 8px 0 16px; }
+
+.back {
+  display: inline-flex; align-items: center; gap: 6px; margin-bottom: 16px;
+  background: transparent; border: none; color: var(--accent); cursor: pointer;
+}
+
+/* Utils */
+.muted { color: var(--muted); }
+.factName { font-weight: 700; margin-right: 6px; }
+.facts { list-style: none; padding: 0; margin: 12px 0 18px; display: grid; gap: 6px; }
+
+.buy {
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 12px 18px; border-radius: 12px; border: 0; cursor: pointer;
+  background: var(--accent); color: #fff; box-shadow: 0 10px 24px rgba(163,26,48,.25);
+  transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
+}
+.buy:hover { transform: translateY(-1px); background: color-mix(in srgb, var(--accent) 85%, #000 15%); }
+
+/* ===== Media / slider ===== */
+.media { position: static; top: 16px; align-self: start; }
+.slideBox {
+  position: relative; border-radius: 16px; overflow: hidden; background: var(--surface-3);
+  aspect-ratio: 1 / 1;
+}
+.slideImg { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+.nav {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--border);
+  background: rgba(255,255,255,.85); backdrop-filter: blur(6px); cursor: pointer;
+}
+.prev { left: 10px; }
+.next { right: 10px; }
+
+.dots { display: flex; gap: 8px; justify-content: center; margin-top: 10px; }
+.dot { width: 10px; height: 10px; border-radius: 999px; border: 1px solid var(--border); background: #fff; cursor: pointer; }
+.active { background: var(--accent); border-color: var(--accent); }
+
+/* ===== Schedule ===== */
+.schedule {
+  margin: 32px auto 0; max-width: 840px; width: 100%; text-align: center;
+  /* флаг на время анимации фильтра */
+  &.isFiltering { pointer-events: none; }
+}
+
+/* Collapser for long tables */
+.table { margin-top: 12px; border: 1px solid var(--border); border-radius: 14px; overflow: hidden; background: var(--surface-1); box-shadow: var(--shadow); }
+.tableClip { position: relative; overflow: hidden; max-height: none; transition: max-height .35s cubic-bezier(.2,.8,.2,1); }
+.fade { position: absolute; inset: auto 0 0 0; height: 64px; background: linear-gradient(180deg, rgba(255,255,255,0) 0%, var(--surface-1) 65%); transition: opacity .25s ease; pointer-events: none; }
+
+.schedule.isCollapsed .tableClip { max-height: 520px; }
+.schedule.isCollapsed .fade { opacity: 1; }
+.schedule.isCollapsed .toggleBtn::after { content: attr(data-label-collapsed); }
+
+.schedule.isExpanded .tableClip { max-height: 2000px; }
+.schedule.isExpanded .fade { opacity: 0; }
+.schedule.isExpanded .toggleBtn::after { content: attr(data-label-expanded); }
+
+/* Header & controls */
+.scheduleHeader { margin-top: 0; margin-bottom: 14px; font-weight: 700; display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 14px; }
+.controls { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+
+/* Age filter pills */
+.ageFilter { display: inline-flex; gap: 8px; padding: 4px; background: var(--surface-3); border: 1px solid var(--border); border-radius: 999px; }
+.ageBtn {
+  padding: 8px 12px; border: 0; border-radius: 999px; background: transparent; font-size: 14px; cursor: pointer;
+  transition: background .2s ease, transform .2s ease, color .2s ease;
+}
+.ageBtn:hover { background: #fff; transform: translateY(-1px); }
+.ageBtn.isActive { background: var(--accent); color: #fff; }
+
+/* Dropdown (generic) */
+.dropdown { position: relative; }
+.ddBtn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 14px; border-radius: 12px; border: 1px solid var(--border); background: #fff; cursor: pointer; font-size: 14px; }
+.menu { left: 50%; transform: translateX(-50%); min-width: 280px; }
+
+/* Table rows & cells */
+.row {
+  display: grid; grid-template-columns: 1.4fr .7fr .5fr; align-items: stretch; border-top: 1px solid var(--border);
+  /* подготовка к анимации фильтра */
+  overflow: hidden;
+  transition:
+    opacity .22s ease,
+    transform .22s ease,
+    max-height .35s cubic-bezier(.2,.8,.2,1),
+    padding .28s ease,
+    margin .28s ease,
+    background-color .2s ease,
+    border-color .28s ease;
+  will-change: opacity, transform, max-height;
+}
+.row:first-child { border-top: 0; }
+.row:hover { background: color-mix(in srgb, var(--surface-3) 50%, transparent); }
+
+@media (max-width: 780px) { .row { grid-template-columns: 1fr; } }
+
+.cellInfo, .cellDate, .cellAction { padding: 16px; background: transparent; }
+.cellInfo { border-right: 1px solid var(--border); text-align: left; }
+.cellDate { border-right: 1px solid var(--border); color: var(--muted); text-align: left; }
+@media (max-width: 780px) {
+  .cellInfo, .cellDate { border-right: 0; }
+}
+
+/* ===== Schedule mobile fixes ===== */
+@media (max-width: 780px) {
+  /* строки расписания становятся одной колонкой */
+  .row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: px; /* небольшой отступ между строками */
+    max-height: none; /* убираем ограничение */
+    overflow: visible;
+  }
+
+}
+
+
+.lessonTitle { font-weight: 700; line-height: 1.45; }
+.time { margin-top: 6px; color: var(--text); font-weight: 700; }
+
+.smallBuy {
+  width: 100%; padding: 10px 14px; background: var(--accent); color: #fff; border: 0; border-radius: 8px; cursor: pointer;
+  transition: background .2s ease, transform .2s ease, box-shadow .2s ease; box-shadow: 0 6px 16px rgba(163,26,48,.22);
+}
+.smallBuy:hover { background: color-mix(in srgb, var(--accent) 85%, #000 15%); transform: translateY(-1px); }
+.smallBuy:disabled { cursor: not-allowed; background: #c7c7c7; box-shadow: none; }
+
+/* Schedule footer */
+.scheduleFooter { display: flex; justify-content: center; padding-top: 12px; }
+.toggleBtn {
+  position: relative; display: inline-flex; align-items: center; gap: 10px; padding: 12px 18px; border-radius: 10px; border: 1px solid var(--border); background: #fff; cursor: pointer; font-size: 14px;
+  transition: box-shadow .2s ease, transform .2s ease, background .2s ease;
+}
+.toggleBtn::after { content: ""; }
+.toggleBtn:hover { transform: translateY(-1px); background: var(--surface-2); }
+.toggleBtnIcon { width: 18px; height: 18px; display: inline-block; border: 2px solid currentColor; border-left: 0; border-top: 0; transform: rotate(45deg); transition: transform .25s ease; }
+.schedule.isExpanded .toggleBtnIcon { transform: rotate(-135deg); }
+
+/* ===== Age filter animation (data-attributes) =====
+   Ставим на .schedule атрибут data-age="7-9" (либо другое значение).
+   На .row ставим либо data-age="7-9", либо data-ages="7-9,10-12" (для нескольких).
+*/
+
+/* Стагер-переходы по позициям строки */
+.table .row { transition-delay: 0ms; }
+.table .row:nth-child(1) { transition-delay: 20ms; }
+.table .row:nth-child(2) { transition-delay: 40ms; }
+.table .row:nth-child(3) { transition-delay: 60ms; }
+.table .row:nth-child(4) { transition-delay: 80ms; }
+.table .row:nth-child(5) { transition-delay: 100ms; }
+
+/* Без выбранной категории — показываем все */
+.schedule:not([data-age]) .row {
+  opacity: 1; transform: none; max-height: 220px;
+}
+
+/* Общие правила «скрыто» при активном фильтре */
+.schedule[data-age] .row {
+  opacity: 0;
+  transform: translateY(6px) scale(.995);
+  max-height: 0;
+  padding-block: 0;
+  margin-block: 0;
+  border-color: transparent;
+}
+
+/* Совпадения: включаем назад */
+.schedule[data-age="3-6"]   .row[data-age="3-6"],
+.schedule[data-age="7-9"]   .row[data-age="7-9"],
+.schedule[data-age="10-12"] .row[data-age="10-12"],
+.schedule[data-age="13-16"] .row[data-age="13-16"],
+.schedule[data-age="adult"] .row[data-age="adult"],
+/* поддержка множественных возрастов через data-ages="7-9,10-12" */
+.schedule[data-age="3-6"]   .row[data-ages*="3-6"],
+.schedule[data-age="7-9"]   .row[data-ages*="7-9"],
+.schedule[data-age="10-12"] .row[data-ages*="10-12"],
+.schedule[data-age="13-16"] .row[data-ages*="13-16"],
+.schedule[data-age="adult"] .row[data-ages*="adult"] {
+  opacity: 1;
+  transform: none;
+  max-height: 220px;     /* подгони под среднюю высоту строки, если нужна другая */
+  padding-block: 16px;   /* вернуть внутренний отступ */
+  border-color: var(--border);
+}
+
+/* Ховер не мешает скрытию */
+.schedule[data-age] .row:hover { background: none; }
+
+/* ===== Leads ===== */
+.leads { margin-top: 48px; }
+.leadsTitle { font-size: clamp(18px, 1.8vw, 24px); margin: 0 0 16px; text-align: center; }
+.leadGrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+@media (max-width: 700px) { .leadGrid { grid-template-columns: 1fr; } }
+
+.leadCard {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 18px;
+  align-items: center;
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: #fff;
+}
+
+/* Уменьшаем фото ведущих на мобильных устройствах */
+.leadPhoto {
+  width: 260px; height: 260px; border-radius: 14px; background: var(--surface-3);
+  display: grid; place-items: center; overflow: hidden;
+}
+
+/* Мобильная версия для фото ведущих */
+@media (max-width: 700px) {
+  .leadCard {
+    grid-template-columns: 120px 1fr; /* Уменьшаем ширину фото колонки */
+    gap: 12px; /* Уменьшаем отступ между фото и текстом */
+    padding: 12px; /* Уменьшаем внутренние отступы карточки */
+  }
+  
+  .leadPhoto {
+    width: 120px; /* Значительно уменьшаем ширину фото */
+    height: 160px; /* Сохраняем квадратную пропорцию */
+  }
+}
+
+.leadImg { width: 100%; height: 100%; object-fit: cover; display: block; }
+.leadPhInner { font-size: 12px; color: var(--muted); }
+.leadName { font-weight: 700; margin-bottom: 4px; }
+.leadLine { color: var(--muted); }
+
+/* ===== Footer spacing ===== */
+.footerGap { margin-top: clamp(32px, 4vw, 64px); }
+
+/* ===== Reduced motion ===== */
+@media (prefers-reduced-motion: reduce) {
+  .tableClip,
+  .toggleBtn, .row, .smallBuy,
+  .ageBtn,
+  .toggleBtnIcon {
+    transition: none !important;
+  }
+}
+
+.backButtonWrapper {
+  margin: 0 auto 1rem;
+  
+  justify-content: flex-start; // выравнивание слева
+}
+
+.backButton {
+  background: transparent;
+  color: #333;
+  padding: 0.5rem 1.2rem;
+  font-size: 1rem;
+  cursor: pointer;
+  border: none;
+  border-radius: 6px;
+  transition: all 0.25s ease-in-out;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.08);
+    color: #000;
+  }
+
+  &:active {
+    transform: scale(0.97);
+  }
+}
+
+
+/* ===== Fonts mapping (используем уже подключённые @font-face) ===== */
+:root{
+  --ff-sans: 'TT-Norms-Pro-Compact-Normal', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  --ff-deco: 'TT-Nooks-Script-Bold', cursive;
+}
+
+/* базовый шрифт страницы */
+.page {
+  font-family: var(--ff-sans);
+  font-weight: 400;
+  letter-spacing: .01em;
+}
+
+/* Заголовок страницы — TT Nooks Script Bold */
+.title {
+  font-family: var(--ff-deco);
+  font-weight: 700;
+  font-size: clamp(28px, 3vw, 40px);
+  line-height: 1.1;
+  margin: 0 0 8px;
+}
+
+/* Описание остаётся обычным (Normal) */
+.description { font-family: var(--ff-sans); }
+
+/* Факты под описанием: подписи жирнее, но тот же шрифт */
+.facts { font-family: var(--ff-sans); }
+.factName { font-weight: 700; }
+
+/* Кнопки/чипы/дропдауны — делаем "Medium"-вид за счёт веса */
+.buy,
+.ddBtn,
+.ageBtn,
+.smallBuy,
+.toggleBtn {
+  font-family: var(--ff-sans);
+  font-weight: 600; /* если есть файл Medium — можно заменить на 500 */
+  letter-spacing: .01em;
+}
+
+/* Заголовки строк расписания пожирнее */
+.lessonTitle { font-family: var(--ff-sans); font-weight: 700; }
+.time        { font-family: var(--ff-sans); font-weight: 700; }
+
+/* Блок «Ведущие» — как в рефе: Normal */
+.leadsTitle { font-family: var(--ff-sans); font-weight: 400; }
+.leadName   { font-family: var(--ff-sans); font-weight: 700; }
+.leadLine   { font-family: var(--ff-sans); font-weight: 400; }
+
+/* Кнопка «Назад» в том же семействе */
+.backButton { font-family: var(--ff-sans); font-weight: 500; }
+
+/* Описание — крупнее и читабельнее */
+.description {
+  font-family: var(--ff-sans);
+  color: var(--text);
+  font-size: clamp(16px, 1.2vw, 20px); /* min 16px на мобилке, до 20px на десктопе */
+  line-height: 1.65;
+  margin: 12px 0 18px;
+}
+
+.description p { margin: 0 0 .7em; } /* аккуратные абзацы */
+
+/* ===== Ведущие — увеличить шрифт ===== */
+.leadName {
+  font-size: clamp(18px, 2.2vw, 26px); /* было меньше */
+  line-height: 1.25;
+  font-weight: 700;
+}
+
+.leadLine {
+  font-size: clamp(17px, 1.6vw, 19px);
+  line-height: 1.55;
+}
+
+/* (опционально) заголовок секции тоже чуть крупнее */
+.leadsTitle {
+  font-size: clamp(20px, 2vw, 28px);
+  line-height: 1.2;
+}
+
+/* WorkshopCyclePage.module.scss — fixed mobile version */
+
+/* ===== Schedule mobile fixes ===== */
+@media (max-width: 780px) {
+  /* строки расписания становятся одной колонкой */
+  .row {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto; /* три строки: информация, дата, кнопка */
+    gap: 8px; /* отступ между блоками */
+    padding: 12px; /* добавляем отступы для мобильной версии */
+    border-top: 1px solid var(--border);
+    position: relative;
+    overflow: visible;
+    max-height: none !important; /* убираем ограничение высоты */
+  }
+
+  /* Убираем границы между ячейками в мобильной версии */
+  .cellInfo, 
+  .cellDate, 
+  .cellAction {
+    border-right: none !important;
+    border-bottom: none;
+    padding: 8px 0; /* уменьшаем отступы для мобильных */
+    text-align: left;
+  }
+
+  /* Информация о занятии - полная ширина */
+  .cellInfo {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  /* Дата и время - полная ширина */
+  .cellDate {
+    grid-column: 1;
+    grid-row: 2;
+    color: var(--muted);
+    font-size: 14px;
+  }
+
+  /* Кнопка - полная ширина */
+  .cellAction {
+    grid-column: 1;
+    grid-row: 3;
+    padding-top: 12px;
+  }
+
+  /* Делаем кнопку более удобной для тапа */
+  .smallBuy {
+    padding: 14px 16px;
+    font-size: 16px; /* минимальный размер для iOS */
+  }
+
+  /* Улучшаем отображение времени */
+  .time {
+    margin-top: 4px;
+    font-size: 14px;
+    color: var(--muted);
+  }
+
+  /* Улучшаем заголовок занятия */
+  .lessonTitle {
+    font-size: 16px;
+    line-height: 1.4;
+  }
+}
+
+/* ===== Additional mobile optimizations ===== */
+@media (max-width: 480px) {
+  .scheduleHeader {
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .controls {
+    width: 100%;
+    justify-content: stretch;
+  }
+  
+  .ageFilter {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .ageBtn {
+    flex: 1;
+    text-align: center;
+    padding: 10px 8px;
+    font-size: 13px;
+  }
+  
+  .dropdown {
+    width: 100%;
+  }
+  
+  .ddBtn {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .menu {
+    min-width: 90vw;
+    left: 5vw;
+    transform: none;
+  }
+}
+
+/* ===== Fix for collapsed state on mobile ===== */
+@media (max-width: 780px) {
+  .schedule.isCollapsed .tableClip {
+    max-height: 800px; /* увеличиваем для мобильных, так как строки выше */
+  }
+  
+  .schedule.isExpanded .tableClip {
+    max-height: 5000px; /* достаточно большое значение */
+  }
+  
+  /* Корректируем высоту строк для анимации фильтра на мобильных */
+  .schedule[data-age] .row {
+    max-height: 0;
+    padding-block: 0;
+    margin-block: 0;
+  }
+  
+  .schedule[data-age="3-6"]   .row[data-age="3-6"],
+  .schedule[data-age="7-9"]   .row[data-age="7-9"],
+  .schedule[data-age="10-12"] .row[data-age="10-12"],
+  .schedule[data-age="13-16"] .row[data-age="13-16"],
+  .schedule[data-age="adult"] .row[data-age="adult"],
+  .schedule[data-age="3-6"]   .row[data-ages*="3-6"],
+  .schedule[data-age="7-9"]   .row[data-ages*="7-9"],
+  .schedule[data-age="10-12"] .row[data-ages*="10-12"],
+  .schedule[data-age="13-16"] .row[data-ages*="13-16"],
+  .schedule[data-age="adult"] .row[data-ages*="adult"] {
+    max-height: 280px; /* увеличиваем для мобильных строк */
+    padding: 12px; /* возвращаем отступы */
+  }
+}
+
+/* ===== Ensure proper transitions on mobile ===== */
+@media (max-width: 780px) {
+  .row {
+    transition: 
+      opacity 0.3s ease,
+      transform 0.3s ease,
+      max-height 0.4s cubic-bezier(0.2, 0.8, 0.2, 1),
+      padding 0.3s ease,
+      margin 0.3s ease,
+      background-color 0.2s ease;
+  }
+}

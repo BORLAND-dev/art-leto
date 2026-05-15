@@ -1,0 +1,95 @@
+/* Контейнер страницы */
+.contacts {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: clamp(16px, 3vw, 32px);
+  font-family: Arial, sans-serif;
+  color: #121212;
+  line-height: 1.6;
+
+  h2 {
+    font-size: clamp(20px, 2.4vw, 28px);
+    font-weight: 700;
+    margin: 0 0 clamp(12px, 1.6vw, 16px);
+  }
+}
+
+/* Отдельные абзацы с крупными отступами, как на макете */
+.block {
+  font-size: clamp(18px, 2.1vw, 24px);
+  margin: clamp(16px, 3vw, 40px) 0;
+}
+
+/* Подзаголовок “Стоимость билетов” чуть ниже */
+.sectionTitle {
+  margin-top: clamp(40px, 6vw, 72px);
+}
+
+/* Список цен — без маркеров, с большими отступами */
+.prices {
+  list-style: none;
+  padding: 0;
+  margin: clamp(16px, 3vw, 32px) 0;
+  font-size: clamp(18px, 2.1vw, 24px);
+
+  li {
+    margin: clamp(10px, 2vw, 16px) 0;
+  }
+}
+
+/* Двухстрочные элементы с «подстрокой» */
+.multiLine {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(4px, 0.8vw, 8px);
+}
+
+.subline {
+  padding-left: clamp(24px, 6vw, 120px); /* визуальный отступ как на фото */
+}
+
+/* Серая подпись под адресом */
+.muted {
+  color: #6b6b6b;
+}
+
+/* Красное слово “уточняется” */
+.accent {
+  color: #d61f1f;
+}
+
+/* Верхняя панель с кнопкой «Назад» */
+
+
+.backButton {
+  font-family: var(--ff-sans); font-weight: 500;
+  background: transparent;
+  color: #333;
+  padding: 0.5rem 1.2rem;
+  font-size: 1rem;
+  cursor: pointer;
+  border: none;
+  border-radius: 6px;
+  transition: all 0.25s ease-in-out;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.08);
+    color: #000;
+  }
+
+  &:active {
+    transform: scale(0.97);
+  }
+}
+/* Отступ перед футером */
+.footerGap {
+  margin-top: clamp(32px, 4vw, 64px);
+}
+
+.mapWrap {
+  height: 380px;         // сделайте выше/ниже по вкусу
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0,0,0,.08);
+  margin-top: 12px;
+}

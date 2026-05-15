@@ -1,0 +1,81 @@
+:root {
+	--color-brand: #A31A30;
+	--color-brand-hover: #8a1629;
+	--color-title-accent: #A41930;
+	--color-amber: #f8b500;
+	--color-text-muted: #828282;
+	--color-text-body: #454545;
+	--color-hero-text: #53565A;
+}
+
+body {
+	margin: 0;
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+		'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+		sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+body {
+	overflow-x: hidden;
+}
+
+code {
+	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+		monospace;
+}
+
+@font-face {
+  font-family: 'TT-Norms-Pro-Compact-Regular';
+  src: url('static/fonts/TT-Norms-Pro-Compact-Regular.woff') format('woff'),
+       url('static/fonts/TT-Norms-Pro-Compact-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'TT-Nooks-Script-Regular';
+  src: url('static/fonts/TT-Nooks-Script-Regular.woff') format('woff'),
+       url('static/fonts/TT-Nooks-Script-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'TT-Nooks-Script-Bold';
+  src: url('static/fonts/TT-Nooks-Script-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'TT-Norms-Pro-Compact-Normal';
+  src: url('static/fonts/TT-Norms-Pro-Compact-Normal.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+
+/* You can now use these fonts in your styles */
+
+body {
+	font-family: 'TT-Norms-Pro-Compact-Regular', sans-serif;
+}
+
+/* Example usage for TT Nooks Script */
+h1,
+h2,
+h3 {
+	font-family: 'TT-Nooks-Script-Regular', cursive;
+}
+
+
+h3 {
+	font-size: 9vw;
+	margin: 0;
+	text-transform: uppercase;
+	color: #454545;
+	font-weight: 900;
+}

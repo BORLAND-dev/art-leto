@@ -1,0 +1,256 @@
+/* ===== Fonts (используем уже установленные @font-face) ===== */
+:root{
+  --ff-sans: 'TT-Norms-Pro-Compact-Normal', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  --ff-deco: 'TT-Nooks-Script-Bold', cursive;
+  --text: #1f2937;
+  --muted: #6b7280;
+}
+
+/* Верхняя панель с кнопкой «Назад» */
+.backButtonBar {
+  max-width: 920px;
+  margin: clamp(8px, 1.5vw, 16px) auto 0;
+  padding: 0 clamp(16px, 3vw, 32px);
+}
+
+.backButton {
+  font-family: var(--ff-sans); font-weight: 500;
+  background: transparent;
+  color: #333;
+  padding: 0.5rem 1.2rem;
+  font-size: 1rem;
+  cursor: pointer;
+  border: none;
+  border-radius: 6px;
+  transition: all 0.25s ease-in-out;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.08);
+    color: #000;
+  }
+
+  &:active {
+    transform: scale(0.97);
+  }
+}
+
+/* ===== Блок 1 — музей ===== */
+.container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 3rem;
+  padding: 3rem 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+
+  @media (max-width: 1024px) {
+    gap: 2rem;
+    padding: 2rem 1.5rem;
+  }
+
+  @media (max-width: 900px) { 
+    flex-direction: column; 
+    align-items: center; 
+    gap: 2rem;
+    padding: 2rem 1rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 1.5rem 1rem;
+    gap: 1.5rem;
+  }
+}
+
+.imageWrapper {
+  flex: 1.3;
+  max-width: 720px;
+
+  @media (max-width: 900px) {
+    flex: none;
+    width: 100%;
+    max-width: 600px;
+  }
+
+  @media (max-width: 480px) {
+    max-width: 100%;
+  }
+
+  img {
+    width: 100%; 
+    height: auto; 
+    border-radius: 12px; 
+    object-fit: cover;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+
+    @media (max-width: 480px) {
+      border-radius: 8px;
+    }
+  }
+}
+
+/* Контент — шрифты, как в макете */
+.content {
+  flex: 1;
+  color: var(--text);
+  line-height: 1.75;
+  font-family: var(--ff-sans);
+
+  @media (max-width: 900px) {
+    width: 100%;
+  }
+
+  /* Заголовок — TT Nooks Script Bold */
+  h2 {
+    font-family: var(--ff-deco);
+    font-weight: 700;
+    font-size: clamp(28px, 2.6vw, 40px);
+    line-height: 1.15;
+    margin-bottom: 1.2rem;
+    color: #111;
+    white-space: nowrap;
+
+    @media (max-width: 900px) {
+      white-space: normal;
+      text-align: center;
+      font-size: clamp(24px, 3vw, 32px);
+      margin-bottom: 1rem;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 22px;
+      line-height: 1.2;
+    }
+  }
+
+  /* Основной текст — TT Norms Pro Compact Normal */
+  p {
+    margin-bottom: 1rem;
+    font-size: clamp(15.5px, 1.05vw, 17px);
+    font-weight: 400;
+
+    @media (max-width: 900px) {
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 15px;
+      line-height: 1.5;
+      margin-bottom: 0.8rem;
+    }
+  }
+
+  /* Выделенные фразы (как "Medium") */
+  em {
+    font-style: italic;
+    font-weight: 600;
+  }
+}
+
+/* ===== Блок 2 — биография ===== */
+.bioSection {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 3rem;
+  padding: 3rem 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+
+  @media (max-width: 1024px) {
+    gap: 2rem;
+    padding: 2rem 1.5rem;
+  }
+
+  @media (max-width: 900px) { 
+    flex-direction: column-reverse; /* Меняем порядок на мобилках */
+    align-items: center;
+    gap: 2rem;
+    padding: 2rem 1rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 1.5rem 1rem;
+    gap: 1.5rem;
+  }
+
+  .content {
+    flex: 1;
+    color: var(--text);
+    line-height: 1.75;
+    font-family: var(--ff-sans);
+
+    @media (max-width: 900px) {
+      width: 100%;
+    }
+
+    p {
+      margin-bottom: 1rem;
+      font-size: clamp(15.5px, 1.05vw, 17px);
+      font-weight: 400;
+
+      @media (max-width: 900px) {
+        font-size: 16px;
+        line-height: 1.6;
+      }
+
+      @media (max-width: 480px) {
+        font-size: 15px;
+        line-height: 1.5;
+        margin-bottom: 0.8rem;
+      }
+    }
+
+    .signatureWrap {
+      margin-top: 1rem;
+
+      @media (max-width: 480px) {
+        margin-top: 0.8rem;
+      }
+
+      img {
+        max-width: 520px; 
+        width: 100%; 
+        height: auto; 
+        display: block;
+
+        @media (max-width: 900px) {
+          max-width: 400px;
+          margin: 0 auto;
+        }
+
+        @media (max-width: 480px) {
+          max-width: 280px;
+        }
+      }
+    }
+  }
+
+  .portraitWrapper {
+    flex: 1.3; /* Такой же коэффициент как у верхней картинки */
+    max-width: 720px;
+
+    @media (max-width: 900px) {
+      flex: none;
+      width: 100%;
+      max-width: 600px;
+    }
+
+    @media (max-width: 480px) {
+      max-width: 100%;
+    }
+
+    img {
+      width: 100%; 
+      height: auto; 
+      border-radius: 12px; 
+      object-fit: cover;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+
+      @media (max-width: 480px) {
+        border-radius: 8px;
+      }
+    }
+  }
+}

@@ -1,0 +1,341 @@
+/* =================== Footer.module.scss (обновлённый) =================== */
+
+/* Тема — те же токены, что и в header */
+:root {
+  --brand: #A31A30;
+  --brand-700: #8c182a;
+  --text: #1f1f1f;
+  --muted: #6b6b6b;
+  --bg: #ffffff;
+  --line: #e9e9e9;
+}
+
+/* Контейнер футера: светлый фон, верхняя граница, аккуратные отступы */
+.root {
+  width: 100%;
+  background: var(--bg);
+  color: var(--text);
+  border-top: 1px solid var(--line);
+  box-sizing: border-box;
+  padding: 20px 24px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Верхняя строка: логотип — адрес — телефоны */
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+/* Нижняя строка: соцсети — партнёры */
+.bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* Логотип — такие же размеры, как в header */
+.logo {
+  width: 220px;
+  height: auto;
+  display: block;
+}
+
+/* Адрес + иконка поиска */
+.contacts {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  a {
+    width: 100%;
+    display: inline-flex;
+    line-height: 1.4;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color .2s ease;
+    &:hover { color: var(--text); }
+  }
+}
+
+/* Блок с иконкой слева */
+.first {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+
+  img {
+    width: 18px;
+    height: 18px;
+    flex: 0 0 18px;
+    margin: 2px 0 0;
+  }
+
+  a {
+    color: var(--muted);
+    text-decoration: none;
+    transition: color .2s ease;
+    &:hover { color: var(--text); }
+  }
+}
+
+/* Телефоны: как в header — колонкой, спокойные ссылки */
+.telephone {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--muted);
+  font-size: 14px;
+font-family: 'TT-Norms-Pro-Compact-Normal';
+  img { width: 18px; height: 18px; }
+
+  svg { width: 18px; height: 18px; }
+
+  div { display: flex; flex-direction: column; }
+}
+
+/* Общий стиль ссылок в колонке (телефоны и т.п.) */
+.col {
+  a {
+    cursor: pointer;
+    color: var(--text);
+    text-decoration: none;
+    transition: color .2s ease, opacity .2s ease;
+    &:hover { color: var(--text); opacity: .85; }
+  }
+}
+
+/* ===== Соцсети (используем «круглые кнопки» как в header) ===== */
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0;
+  list-style: none;
+  margin: 0;
+
+  /* каждая ссылка — круглая кнопка */
+  a {
+    --size: 38px;
+    width: var(--size);
+    height: var(--size);
+    border-radius: 50%;
+    background: #f5f5f5;
+    border: 1px solid #e8e8e8;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 1px 2px rgba(0,0,0,.04);
+    transition: transform .18s ease, box-shadow .18s ease, background-color .18s ease, border-color .18s ease;
+
+    img {
+      width: 20px;
+      height: 20px;
+      pointer-events: none;
+      transition: transform .22s ease, opacity .22s ease;
+      display: block;
+    }
+
+    &:hover {
+      transform: translateY(-2px);
+      background: #ffffff;
+      border-color: #dedede;
+      box-shadow: 0 4px 10px rgba(0,0,0,.08);
+
+      img { transform: scale(1.06) rotate(6deg); opacity: .95; }
+    }
+
+    &:active {
+      transform: scale(.96);
+      box-shadow: 0 2px 6px rgba(0,0,0,.12);
+    }
+
+    &:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(163,26,48,.18);
+      border-color: rgba(163,26,48,.5);
+    }
+  }
+}
+
+/* ===== Партнёры — аккуратная полка логотипов, как в хедер-иконках ===== */
+.partners {
+  margin-top: 0;
+  text-align: center;
+  flex-wrap: nowrap;
+
+  span {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 600;
+    color: var(--muted);
+     flex-wrap: nowrap;
+  }
+}
+
+.partnerLogos {
+  display: flex;
+  
+  justify-content: center;
+  gap: 20px;
+   flex-wrap: nowrap;
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 14px;
+    border-radius: 10px;
+    background: #ffffff;
+    border: 1px solid #ececec;
+    transition: transform .18s ease, box-shadow .18s ease, background-color .18s ease, border-color .18s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+      background: #fff;
+      border-color: #e3e3e3;
+     
+    }
+
+    &:active { transform: scale(.98); }
+  }
+
+  img {
+    max-height: 50px;
+    width: auto;
+    object-fit: contain;
+    display: block;
+    filter: saturate(.95) contrast(1.02);
+  }
+}
+
+/* ===== Мобильная «панель месяцев» — совпадает по стилю с header-кнопками ===== */
+.mobilePanel {
+  margin: 0 0 6px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+
+  button {
+    border: 1px solid #eeeeee;
+    background-color: #f6f6f6;
+    padding: 10px 16px;
+    border-radius: 40px;
+    text-transform: uppercase;
+    font-family: 'TT-Norms-Pro-Compact-Normal';
+    font-size: 12px;
+    line-height: 1;
+    transition: background-color .2s ease, color .2s ease, border-color .2s ease, transform .1s ease;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #ffffff;
+      border-color: #e7e7e7;
+    }
+
+    &:active {
+      transform: scale(.98);
+      background-color: var(--brand);
+      color: #fff;
+      border-color: var(--brand);
+    }
+  }
+}
+
+/* Мобильная укладка логотип + телефоны */
+.mobileMMM {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+
+  a img { width: 160px; height: auto; }
+}
+
+/* ===== Адаптив ===== */
+@media (max-width: 1024px) {
+  .root { padding: 16px; gap: 16px; }
+  .logo { width: 190px; }
+  .top { flex-wrap: wrap; align-items: flex-start; gap: 12px; }
+  .bottom { gap: 12px; }
+
+  .menu a { --size: 36px; }
+}
+
+@media (max-width: 768px) {
+  .logo { width: 160px; }
+
+  .top {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+  }
+
+  .bottom {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+  }
+
+  .contacts a { font-size: 14px; }
+  .col a { font-size: 14px; }
+
+  /* Уменьшаем размер партнеров для мобильных */
+  .partnerLogos { 
+    gap: 12px;
+    
+    /* Выравниваем все элементы по одной высоте */
+    align-items: center;
+  }
+  
+  .partnerLogos a { 
+    padding: 6px 10px;
+    height: 50px; /* Фиксированная высота для выравнивания */
+    display: flex;
+    align-items: center;
+  }
+  
+  .partnerLogos img { 
+    max-height: 35px; /* Уменьшенный размер для мобильных */
+    width: auto;
+  }
+}
+
+/* Уважение prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .menu a,
+  .menu a img,
+  .partnerLogos a,
+  .partnerLogos a img,
+  .mobilePanel button {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+.addressBlock {
+  font-size: 20px;      /* базовый размер для мобилок */
+  line-height: 1.4;
+}
+
+@media (min-width: 768px) {
+  .addressBlock {
+    font-size: 20px;    /* планшет/десктоп */
+    line-height: 1.45;
+  }
+}
+
+@media (min-width: 1200px) {
+  .addressBlock {
+    font-size: 20px;    /* крупные экраны */
+    line-height: 1.5;
+  }
+}
+

@@ -1,0 +1,10 @@
+.root {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.heroImage {
+  width: min(400px, 92vw);
+  height: auto;
+}

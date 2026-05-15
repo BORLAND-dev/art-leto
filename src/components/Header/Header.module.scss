@@ -1,0 +1,287 @@
+/* Тема */
+:root {
+  --brand: #A31A30;
+  --brand-700: #8c182a;
+  --text: #1f1f1f;
+  --muted: #6b6b6b;
+  --bg: #ffffff;
+  --line: #e9e9e9;
+}
+
+/* ШАПКА */
+.root {
+  height: 68px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 0 24px;
+  box-sizing: border-box;
+  background: var(--bg);
+  border-bottom: 1px solid var(--line);
+  color: var(--text);
+  position: static;
+  top: 0;
+  z-index: 1000;
+}
+
+/* ЛОГО */
+.logo {
+  width: 220px;
+  height: auto;
+  display: block;
+}
+
+/* МЕНЮ */
+.menu {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+  gap: 12px;
+  margin: 0;
+  flex: 1;                 /* меню занимает пространство между логотипом и телефоном */
+  
+  li {
+    font-family: 'TT-Nooks-Script-Regular';
+    text-transform: uppercase;
+    font-size: 13px;
+    color: var(--text);
+    border-radius: 10px;
+    height: 34px;
+    padding: 0 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    transition: background-color .2s ease, color .2s ease, box-shadow .2s ease;
+
+    /* спокойный hover */
+    &:hover {
+      background-color: #f7f7f7;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      height: 100%;
+    }
+  }
+
+  /* Акцентная кнопка */
+  .subscriptionButton {
+    background-color: var(--brand);
+    color: #fff;
+    font-weight: 600;
+    box-shadow: 0 1px 0 rgba(0,0,0,.06);
+
+    &:hover {
+      background-color: var(--brand-700);
+      color: #fff;
+    }
+  }
+
+  /* ссылки-иконки внутри меню */
+  a {
+    cursor: pointer;
+
+    img {
+      display: block;
+      height: 20px;
+      width: auto;
+      transition: transform .15s ease;
+      &:hover { transform: scale(1.04); }
+    }
+  }
+}
+
+/* ТЕЛЕФОН/КОНТАКТЫ */
+.telephone {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--muted);
+  font-size: 14px;
+
+  img {
+    width: 18px;
+    height: 18px;
+  }
+
+  svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  div { display: flex; flex-direction: column; }
+}
+
+.col {
+  a {
+    cursor: pointer;
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 14px;
+    transition: color .2s ease;
+    &:hover { color: var(--text); }
+  }
+}
+
+/* УПЛОТНЁННЫЙ РЕЖИМ ДЛЯ НЕБОЛЬШИХ ЭКРАНОВ */
+@media (max-width: 1024px) {
+  .root {
+    gap: 16px;
+    padding: 0 16px;
+  }
+  .logo { width: 190px; }
+  .menu li {
+    height: 32px;
+    padding: 0 12px;
+    font-size: 12px;
+  }
+}
+
+/* МОБИЛЬНЫЕ */
+@media (max-width: 768px) {
+  .telephone,
+
+  .socialMenu {
+    display: none !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .root {
+    height: auto;
+    padding: 10px 17px;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 10px;
+    
+  }
+
+  .logo {
+    width: 160px;
+    order: 1;
+  }
+
+  .menu {
+    order: 3;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0.5rem auto 0;
+
+    li {
+      height: 30px;
+      min-width: 68px;
+      padding: 0 10px;
+      font-size: 11.5px;
+    }
+    .subscriptionButton {
+      order: 99;           /* чтобы акцентная кнопка уходила в конец ряда */
+      width: auto;
+    }
+  }
+}
+
+/* УЧЁТ ПРЕДПОЧТЕНИЙ ПО АНИМАЦИИ */
+@media (prefers-reduced-motion: reduce) {
+  .menu li,
+  .menu a img {
+    transition: none !important;
+  }
+}
+
+:root {
+  --brand: #A31A30;
+}
+
+
+
+
+
+/* Сам логотип */
+.socials a img,
+.socials a svg {
+  width: 58%;
+  height: 58%;
+  transition: transform .25s ease;
+  will-change: transform;
+}
+
+/* лёгкий поворот и масштаб на hover */
+.socials a:hover img,
+.socials a:hover svg {
+  transform: rotate(6deg) scale(1.06);
+}
+
+/* лёгкая «плавучесть» при загрузке со ступенчатой задержкой */
+.socials a {
+  animation: float-in .5s ease both;
+}
+.socials a:nth-child(1) { animation-delay: .02s; }
+.socials a:nth-child(2) { animation-delay: .06s; }
+.socials a:nth-child(3) { animation-delay: .10s; }
+.socials a:nth-child(4) { animation-delay: .14s; }
+
+/* Цветовые темы (опционально) */
+.socials a.is-invert img,
+.socials a.is-invert svg {
+  filter: invert(0); /* для цветных SVG — так и оставь */
+}
+
+
+
+/* Кадры */
+@keyframes ripple {
+  from { transform: scale(0); opacity: .35; }
+  to   { transform: scale(1.2); opacity: 0; }
+}
+@keyframes float-in {
+  from { transform: translateY(6px); opacity: 0; }
+  to   { transform: translateY(0);   opacity: 1; }
+}
+
+.socialMenu {
+  display: flex;
+  gap: 12px;
+
+  a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: #f5f5f5;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+
+    img {
+      width: 20px;
+      height: 20px;
+      pointer-events: none; /* кликаем по ссылке, не по картинке */
+      transition: transform 0.25s ease;
+    }
+
+    &:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.12);
+      background: #fff;
+
+      img {
+        transform: scale(1.1);
+      }
+    }
+
+    &:active {
+      transform: scale(0.95);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.16);
+    }
+  }
+}
+

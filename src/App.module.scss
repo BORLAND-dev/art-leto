@@ -1,0 +1,245 @@
+.root {
+  height: fit-content;
+  height: 800px;
+  //overflow-x: hidden;
+  width: 90%;
+  margin: 0 auto;
+}
+
+@media (max-width: 900px) {
+  .root {
+    width: 100%;
+  }
+}
+
+.mobile {
+  display: flex;
+  flex-direction: column;
+}
+
+.mobileRoot {
+  display: flex;
+  position: relative;
+  padding: 5vw;
+  padding-top: 10vw;
+  > a img {
+    position: absolute;
+    width: 40vw;
+    height: auto;
+    right: 0;
+    z-index: -1;
+  }
+}
+
+.mobileTop {
+  display: flex;
+  flex-direction: column;
+  img {
+    width: 50vw;
+  }
+  p {
+    font-size: 4vw;
+    z-index: 100;
+    width: 70%;
+  }
+}
+
+.mobilePanel {
+  margin-top: 2vw;
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 4vw;
+  button {
+    border: none;
+    background-color: #F6F6F6;
+    padding: 3vw 6vw;
+    border-radius: 40px;
+
+    text-transform: uppercase;
+    font-family: 'TT-Nooks-Script-Regular';
+
+    transition: .35s ease-in-out;
+
+    &:active {
+      background-color: #F8B500;
+      color: black;
+    }
+  }
+}// Mobile Header Styles
+.mobileHeader {
+  background: var(--bg);
+  border-bottom: 1px solid var(--line);
+}
+
+.mobileTopBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  gap: 12px;
+}
+
+.mobileLogo {
+  img {
+    width: 160px;
+    height: auto;
+  }
+}
+
+.mobileMenuButtons {
+  display: flex;
+  gap: 8px;
+  margin-left: auto;
+}
+
+.mobileMenuButton {
+  font-family: 'TT-Nooks-Script-Regular';
+  text-transform: uppercase;
+  font-size: 11.5px;
+  color: var(--text);
+  border-radius: 10px;
+  height: 30px;
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  text-decoration: none;
+  background-color: var(--brand);
+  color: #fff;
+  font-weight: 600;
+  box-shadow: 0 1px 0 rgba(0,0,0,.06);
+  transition: background-color .2s ease, color .2s ease, box-shadow .2s ease;
+  min-width: 68px;
+
+  &:hover {
+    background-color: var(--brand-700);
+    color: #fff;
+  }
+}
+
+.mobileBurgerButton {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  gap: 4px;
+  
+  span {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background-color: var(--text);
+    transition: all 0.3s ease;
+  }
+  
+  &.menuOpen {
+    span:nth-child(1) {
+      transform: rotate(45deg) translate(6px, 6px);
+    }
+    
+    span:nth-child(2) {
+      opacity: 0;
+    }
+    
+    span:nth-child(3) {
+      transform: rotate(-45deg) translate(6px, -6px);
+    }
+  }
+}
+
+.mobileMenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--bg);
+  border-bottom: 1px solid var(--line);
+  z-index: 1000;
+}
+
+.mobileNav {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  
+  a {
+    padding: 12px 0;
+    text-decoration: none;
+    color: var(--text);
+    border-bottom: 1px solid var(--line);
+    
+    &:last-child {
+      border-bottom: none;
+    }
+    
+    &:hover {
+      color: var(--brand);
+    }
+  }
+}
+
+.mobileHero {
+  padding: 20px 16px;
+  text-align: center;
+}
+
+.mobileLogos {
+  margin-bottom: 10px;
+ img {
+    max-width: 150px; /* было 200px — уменьшили */
+    height: auto;
+  }
+}
+
+
+.mobileMainTitle {
+  font-size: 32px;
+  font-weight: bold;
+  margin: 0 0 8px 0;
+  color: #750808;
+}
+
+.mobileSubtitle {
+  font-size: 22;
+  margin: 0;
+  color: #750808;
+}
+
+// Адаптация для очень маленьких экранов
+@media (max-width: 360px) {
+  .mobileTopBar {
+    padding: 10px 12px;
+  }
+  
+  .mobileLogos img {
+    width: 140px;
+  }
+  
+  .mobileMenuButton {
+    font-size: 11px;
+    padding: 0 8px;
+    min-width: 60px;
+  }
+  
+  .mobileMainTitle {
+    font-size: 16px;
+  }
+  
+  .mobileSubtitle {
+    font-size: 13px;
+  }
+}
+
+// Учёт предпочтений по анимациям
+@media (prefers-reduced-motion: reduce) {
+  .mobileMenuButton,
+  .mobileBurgerButton span {
+    transition: none !important;
+  }
+}

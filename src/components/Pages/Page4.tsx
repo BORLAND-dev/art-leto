@@ -128,7 +128,7 @@ const WorkshopCyclePage: React.FC = () => {
               <div className={s.controls}>
                 <div className={s.dropdown}>
                   <button type="button" className={s.ddBtn} aria-haspopup="listbox" aria-expanded="false">
-                    7–12 лет
+                    6+ лет
                   </button>
                 </div>
               </div>

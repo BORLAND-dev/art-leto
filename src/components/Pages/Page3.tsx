@@ -4,13 +4,13 @@ import { useNavigate } from "react-router-dom";
 import s from "./WorkshopCyclePage.module.scss";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
-import borovskiyImage4 from '../../static/images/borovskiy4-1.png';
+import girofleImage from '../../static/images/Жирофле.5b8c1e5dec9bb2993bcb.jpg';
 
 // ------------------ Types ------------------
 interface SessionItem { n: number; title: string; date: string; time?: string; url?: string; }
 
 // ------------------ Consts ------------------
-const IMG_FALLBACK = borovskiyImage4; // ИЗМЕНИ ЭТУ СТРОЧКУ
+const IMG_FALLBACK = girofleImage;
 const VISIBLE_ROWS = 6;
 
 // ------------------ Component ------------------
@@ -19,7 +19,7 @@ const WorkshopCyclePage: React.FC = () => {
   const [slide, setSlide] = useState(0);
   const [expanded, setExpanded] = useState(false);
 
-  const images = [borovskiyImage4];
+  const images = [girofleImage];
 
   // ПЕРЕМЕСТИ ЭТУ ФУНКЦИЮ СЮДА
   const handleBuyTicket = (url?: string) =>
@@ -129,7 +129,7 @@ const WorkshopCyclePage: React.FC = () => {
               <div className={s.controls}>
                 <div className={s.dropdown}>
                   <button type="button" className={s.ddBtn} aria-haspopup="listbox" aria-expanded="false">
-                    16+
+                    6+ лет
                   </button>
                 </div>
               </div>

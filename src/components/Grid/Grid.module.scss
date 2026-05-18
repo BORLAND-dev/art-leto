@@ -89,14 +89,14 @@
   }
 }
 
-/* Изображение (портретная пропорция) */
+/* Изображение (высота в 2 раза меньше прежней 3:4) */
 .imageContainer {
   position: relative;
   width: 100%;
-  aspect-ratio: 3 / 4;
+  aspect-ratio: 3 / 2;
 
   @supports not (aspect-ratio: 1) {
-    padding-top: 133.333%;
+    padding-top: 66.667%;
   }
 
   border-radius: 12px;
@@ -292,8 +292,8 @@
   }
 
   .imageContainer {
-    aspect-ratio: 2 / 3;
-    @supports not (aspect-ratio: 1) { padding-top: 150%; }
+    aspect-ratio: 4 / 3;
+    @supports not (aspect-ratio: 1) { padding-top: 75%; }
   }
 
   .panel { gap: 6px; }

@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import s from "./WorkshopCyclePage.module.scss";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
-import page4Image from '../../static/images/7.JPG';
+import page4Image from '../../static/images/129A8583.JPG';
 
 // ------------------ Types ------------------
 interface SessionItem { n: number; title: string; date: string; time?: string; url?: string; }

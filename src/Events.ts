@@ -1,9 +1,9 @@
 import dayjs from 'dayjs';
 import { IEvent } from './types';
-import borovskiyImage from './static/images/9.jpg';
+import borovskiyImage from './static/images/129A3768.jpg';
 import borovskiyImage3 from './static/images/19.jpeg';
 import borovskiyImage4 from './static/images/Жирофле.jpg';
-import borovskiyImage5 from './static/images/7.JPG';
+import borovskiyImage5 from './static/images/129A8583.JPG';
 
 const testEvents: IEvent[] = [
 	{

@@ -1,45 +1,231 @@
 .root {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 24px 32px;
-
-  min-height: 200px;
-  height: fit-content;
   width: 100%;
   background-color: #fff;
   position: relative;
-  padding: 24px 16px;
+  padding: 36px 28px 28px clamp(32px, 5vw, 64px);
   box-sizing: border-box;
+  overflow: visible;
+  min-height: 360px;
+}
+
+.bgDecor {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: visible;
+}
+
+.bubble {
+  position: absolute;
+  border-radius: 50%;
+  box-sizing: border-box;
+}
+
+/* Жёлтые заливки */
+.bubbleY1 {
+  width: clamp(120px, 14vw, 190px);
+  height: clamp(120px, 14vw, 190px);
+  left: 4%;
+  bottom: 8%;
+  background: rgba(248, 181, 0, 0.42);
+}
+
+.bubbleY2 {
+  width: clamp(100px, 11vw, 155px);
+  height: clamp(100px, 11vw, 155px);
+  right: 1%;
+  top: 18%;
+  background: rgba(248, 181, 0, 0.38);
+}
+
+/* Бирюзовые заливки */
+.bubbleT1 {
+  width: clamp(72px, 8vw, 115px);
+  height: clamp(72px, 8vw, 115px);
+  left: 14%;
+  top: 42%;
+  background: rgba(93, 188, 184, 0.45);
+}
+
+.bubbleT2 {
+  width: clamp(56px, 6vw, 88px);
+  height: clamp(56px, 6vw, 88px);
+  right: 14%;
+  bottom: 22%;
+  background: rgba(93, 188, 184, 0.35);
+}
+
+.bubbleT3 {
+  width: clamp(48px, 5vw, 72px);
+  height: clamp(48px, 5vw, 72px);
+  left: 42%;
+  top: 8%;
+  background: rgba(93, 188, 184, 0.28);
+}
+
+/* Розовые кольца */
+.bubbleP1 {
+  width: clamp(64px, 7vw, 98px);
+  height: clamp(64px, 7vw, 98px);
+  left: 10%;
+  top: 22%;
+  border: 2.5px solid rgba(242, 140, 168, 0.55);
+  background: transparent;
+}
+
+.bubbleP2 {
+  width: clamp(52px, 5.5vw, 80px);
+  height: clamp(52px, 5.5vw, 80px);
+  right: 9%;
+  top: 52%;
+  border: 2.5px solid rgba(242, 140, 168, 0.5);
+  background: transparent;
+}
+
+/* Оранжевые кольца */
+.bubbleO1 {
+  width: clamp(44px, 4.5vw, 68px);
+  height: clamp(44px, 4.5vw, 68px);
+  left: 28%;
+  bottom: 18%;
+  border: 2px solid rgba(245, 168, 66, 0.5);
+  background: transparent;
+}
+
+.bubbleO2 {
+  width: clamp(38px, 4vw, 58px);
+  height: clamp(38px, 4vw, 58px);
+  right: 28%;
+  top: 12%;
+  border: 2px solid rgba(245, 168, 66, 0.45);
+  background: transparent;
+}
+
+/* Дополнительные кольца (бирюза / жёлтый контур) */
+.bubbleR1 {
+  width: clamp(80px, 9vw, 125px);
+  height: clamp(80px, 9vw, 125px);
+  left: 21%;
+  top: 58%;
+  border: 2.5px solid rgba(93, 188, 184, 0.4);
+  background: transparent;
+}
+
+.bubbleR2 {
+  width: clamp(70px, 7.5vw, 108px);
+  height: clamp(70px, 7.5vw, 108px);
+  right: 22%;
+  top: 38%;
+  border: 2.5px solid rgba(248, 181, 0, 0.35);
+  background: transparent;
+}
+
+.bubbleR3 {
+  width: clamp(36px, 3.5vw, 52px);
+  height: clamp(36px, 3.5vw, 52px);
+  left: 52%;
+  bottom: 12%;
+  border: 2px solid rgba(242, 140, 168, 0.4);
+  background: transparent;
 }
 
 .logoLink {
   display: flex;
   text-decoration: none;
   color: inherit;
+  position: relative;
+  z-index: 2;
+  justify-self: center;
 }
 
-.text {
-  font-family: 'TT-Norms-Pro-Compact-Regular', sans-serif;
-  margin: 0;
-  max-width: 640px;
-  font-size: clamp(16px, 1.8vw, 22px);
-  line-height: 1.45;
-  color: #53565A;
+.hero {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 440px) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(8px, 1.5vw, 24px);
+  min-height: 300px;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding-left: clamp(8px, 2vw, 28px);
 }
 
-.accent {
-  color: #A41930;
+.circleLeft,
+.circleRight {
+  flex-shrink: 0;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  overflow: visible;
+  line-height: 0;
+  position: relative;
+  z-index: 2;
+  width: clamp(170px, 22vw, 270px);
+}
+
+.circleLeft {
+  justify-self: center;
+  margin-left: clamp(12px, 2.5vw, 40px);
+}
+
+.circleRight {
+  justify-self: start;
+}
+
+.circleLeft img,
+.circleRight img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
 }
 
 @media (max-width: 900px) {
   .root {
-    flex-direction: column;
-    text-align: center;
+    min-height: auto;
+    padding: 24px 16px 20px;
   }
 
-  .text {
-    max-width: 100%;
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    justify-items: center;
+    min-height: auto;
+    padding-bottom: 8px;
+  }
+
+  .circleLeft,
+  .circleRight {
+    width: clamp(150px, 48vw, 220px);
+    justify-self: center;
+  }
+
+  .circleLeft {
+    order: 1;
+    margin-left: 0;
+  }
+
+  .logoLink {
+    order: 2;
+  }
+
+  .circleRight {
+    order: 3;
+  }
+
+  .bgDecor {
+    opacity: 0.85;
+  }
+
+  .bubbleY1 {
+    left: 2%;
+    bottom: 4%;
+  }
+
+  .bubbleY2 {
+    right: -6%;
+    top: 8%;
   }
 }

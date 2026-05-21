@@ -53,14 +53,18 @@
   flex-direction: column;
   position: relative;
 
-  a {
+  a,
+  .addressBlock {
     width: 100%;
     display: inline-flex;
     line-height: 1.4;
     color: var(--muted);
     text-decoration: none;
     transition: color .2s ease;
-    &:hover { color: var(--text); }
+  }
+
+  a:hover {
+    color: var(--text);
   }
 }
 
@@ -77,11 +81,15 @@
     margin: 2px 0 0;
   }
 
-  a {
+  a,
+  .addressBlock {
     color: var(--muted);
     text-decoration: none;
     transition: color .2s ease;
-    &:hover { color: var(--text); }
+  }
+
+  a:hover {
+    color: var(--text);
   }
 }
 
@@ -321,20 +329,27 @@ font-family: 'TT-Norms-Pro-Compact-Normal';
 }
 
 .addressBlock {
-  font-size: 20px;      /* базовый размер для мобилок */
-  line-height: 1.4;
+  flex-direction: column;
+  font-family: 'TT-Norms-Pro-Compact-Regular', 'TT-Norms-Pro-Compact-Normal', sans-serif;
+  font-size: 22px;
+  line-height: 1.45;
+}
+
+.addressTitle {
+  font-weight: 600;
+  color: var(--text);
 }
 
 @media (min-width: 768px) {
   .addressBlock {
-    font-size: 20px;    /* планшет/десктоп */
-    line-height: 1.45;
+    font-size: 23px;
+    line-height: 1.5;
   }
 }
 
 @media (min-width: 1200px) {
   .addressBlock {
-    font-size: 20px;    /* крупные экраны */
+    font-size: 24px;
     line-height: 1.5;
   }
 }

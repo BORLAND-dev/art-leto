@@ -11,6 +11,8 @@ import rt from "../../static/icons/rt.svg";
 import phone from "../../static/icons/phone.svg";
 import search from "../../static/icons/search.svg";
 import partnerOsdLogo from "../../static/images/logo_osd_color__2024.png";
+import partnerYandexAfishaLogo from "../../static/images/yandex-afisha-horizontal-logo.png";
+import partnerDetiFmLogo from "../../static/images/DF_logo_bezchastota.JPG";
 
 
 
@@ -31,22 +33,22 @@ const Footer: React.FC<FooterProps> = ({ scrollToSection }) => {
   };
 
 const AddressBlock = () => (
-  <a
-    href="https://yandex.ru/maps/-/CLEg7MNv"
-    target="_blank"
-    rel="noopener noreferrer"
-    className={styles.addressBlock}
-  >
-    Место проведения:
+  <div className={styles.addressBlock}>
+    <span className={styles.addressTitle}>Место проведения:</span>
     <br />
-    Дом-музей М.С. Щепкина (ул. Щепкина, 47, стр. 2, Москва)
+    Дом-музей М.С. Щепкина
     <br />
-    Мемориальный музей «Творческая мастерская театрального художника Давида Боровского»
+    Адрес: ул. Щепкина, 47, стр. 2, Москва
+    <br />
+    (ст. м. Проспект Мира)
+    <br />
+    <br />
+    Музей-мастерская Давида Боровского
     <br />
     Адрес: Москва, Б. Афанасьевский переулок, д. 3, стр. 3
     <br />
     (ст. м. Кропоткинская)
-  </a>
+  </div>
 );
 
   const PhonesBlock = () => (
@@ -83,16 +85,30 @@ const AddressBlock = () => (
     <div className={styles.partners}>
       <div className={styles.partnerLogos}>
         <a
-          href="https://afisha.yandex.ru/moscow"
+          href="https://afisha.yandex.ru/moscow/selections/kids-art-summer-in-the-bakhrushinsky-museum?city=moscow&source=rubric_kids_featured"
           target="_blank"
           rel="noopener noreferrer"
         >
           <img
-            src="https://www.bakhrushinmuseum.ru/wp-content/uploads/2025/05/partner2.png"
-            alt="Партнёр 2"
+            src={partnerYandexAfishaLogo}
+            alt="Яндекс Афиша"
           />
         </a>
-        <a href="https://www.osd.ru/" target="_blank" rel="noopener noreferrer">
+        <a
+          href="https://detifm.ru/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img
+            src={partnerDetiFmLogo}
+            alt="Детское радио"
+          />
+        </a>
+        <a
+          href="https://www.osd.ru/newsinf.asp?nw=23556"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <img
             src={partnerOsdLogo}
             alt="Партнёр 3 — ОСД"

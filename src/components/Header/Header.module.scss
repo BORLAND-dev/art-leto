@@ -32,6 +32,48 @@
   display: block;
 }
 
+.monthNav {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+  flex: 1;
+  justify-content: center;
+}
+
+.monthBtn {
+  appearance: none;
+  border: none;
+  cursor: pointer;
+  font-family: 'TT-Nooks-Script-Regular', Georgia, serif;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #fff;
+  background: #f5b800;
+  min-width: 88px;
+  height: 36px;
+  padding: 0 16px;
+  border-radius: 18px;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  box-sizing: border-box;
+
+  &:hover {
+    filter: brightness(1.05);
+    color: #fff;
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
+}
+
 /* МЕНЮ */
 .menu {
   display: flex;
@@ -136,6 +178,13 @@
     padding: 0 16px;
   }
   .logo { width: 190px; }
+  .monthNav { gap: 8px; }
+  .monthBtn {
+    min-width: 64px;
+    height: 32px;
+    font-size: 11px;
+    padding: 0 10px;
+  }
   .menu li {
     height: 32px;
     padding: 0 12px;
@@ -167,24 +216,20 @@
     order: 1;
   }
 
-  .menu {
-    order: 3;
+  .monthNav {
+    order: 2;
     width: 100%;
     justify-content: center;
     flex-wrap: wrap;
     gap: 8px;
-    margin: 0.5rem auto 0;
+    flex: none;
+  }
 
-    li {
-      height: 30px;
-      min-width: 68px;
-      padding: 0 10px;
-      font-size: 11.5px;
-    }
-    .subscriptionButton {
-      order: 99;           /* чтобы акцентная кнопка уходила в конец ряда */
-      width: auto;
-    }
+  .monthBtn {
+    min-width: 76px;
+    height: 32px;
+    font-size: 12px;
+    padding: 0 12px;
   }
 }
 

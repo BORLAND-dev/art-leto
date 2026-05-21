@@ -191,8 +191,9 @@
 
 .mobileLogos {
   margin-bottom: 10px;
- img {
-    max-width: 150px; /* было 200px — уменьшили */
+
+  img {
+    max-width: min(320px, 92vw);
     height: auto;
   }
 }

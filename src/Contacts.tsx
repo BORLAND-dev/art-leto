@@ -23,7 +23,18 @@ const Contacts: React.FC = () => {
         <h2>Адрес и часы работы:</h2>
 
         <p className={styles.block}>
-          <strong>Адрес:</strong> Москва, Б. Афанасьевский переулок, д. 3, стр. 3<br />
+          <strong>Дом-музей М.С. Щепкина</strong>
+          <br />
+          <strong>Адрес:</strong> ул. Щепкина, 47, стр. 2, Москва
+          <br />
+          <span className={styles.muted}>(ст. м. Проспект Мира)</span>
+        </p>
+
+        <p className={styles.block}>
+          <strong>Музей-мастерская Давида Боровского</strong>
+          <br />
+          <strong>Адрес:</strong> Москва, Б. Афанасьевский переулок, д. 3, стр. 3
+          <br />
           <span className={styles.muted}>(ст. м. Кропоткинская)</span>
         </p>
 
@@ -40,26 +51,6 @@ const Contacts: React.FC = () => {
     Пн, Вт — выходной
   </span>
 </p>
-
-        <h2 className={styles.sectionTitle}>Стоимость билетов:</h2>
-
-        <ul className={styles.prices}>
-          <li>Взрослые — 450 ₽</li>
-          <li>Льготные — 250 ₽</li>
-
-          <li className={styles.multiLine}>
-            <span>Экскурсионная путевка 60 мин: группа до 5 человек — 1400 ₽.</span>
-            <span className={styles.subline}>Группа до 10 чел. — 2700 ₽. </span>
-             <span className={styles.subline}>Входной билет приобретается дополнительно. </span>
-          </li>
-
-          <li className={styles.multiLine}>
-            <span>Экскурсионная путевка 90 мин: группа до 5 чел. — 2000 ₽.</span>
-            <span className={styles.subline}>Группа до 10 чел. — 3800 ₽.</span>
-            <span className={styles.subline}>Входной билет приобретается дополнительно. </span>
-            
-          </li>
-        </ul>
 
         {/* Интерактивная карта */}
        <h2 className={styles.sectionTitle}>Как нас найти</h2>

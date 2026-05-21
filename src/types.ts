@@ -11,6 +11,10 @@ export interface IEvent {
     imageLink: string;
     type: string;
     description: string;
+    /** Дата и время в одной строке, например «1.06 16:00» */
+    eventDateTime?: string;
+    /** Цветная метка (площадка) */
+    tagVenue?: string;
 }
 
 

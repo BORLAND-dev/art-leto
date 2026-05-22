@@ -23,16 +23,14 @@ const Contacts: React.FC = () => {
         <h2>Адрес и часы работы:</h2>
 
         <p className={styles.block}>
-          <strong>Дом-музей М.С. Щепкина</strong>
-          <br />
+          <strong className={styles.venueName}>Дом-музей М.С. Щепкина</strong>
           <strong>Адрес:</strong> ул. Щепкина, 47, стр. 2, Москва
           <br />
           <span className={styles.muted}>(ст. м. Проспект Мира)</span>
         </p>
 
         <p className={styles.block}>
-          <strong>Музей-мастерская Давида Боровского</strong>
-          <br />
+          <strong className={styles.venueName}>Музей-мастерская Давида Боровского</strong>
           <strong>Адрес:</strong> Москва, Б. Афанасьевский переулок, д. 3, стр. 3
           <br />
           <span className={styles.muted}>(ст. м. Кропоткинская)</span>

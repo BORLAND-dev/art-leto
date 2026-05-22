@@ -135,8 +135,9 @@
   text-decoration: none;
   color: inherit;
   position: relative;
-  z-index: 2;
+  z-index: 3;
   justify-self: center;
+  isolation: isolate;
 }
 
 .hero {

@@ -1,5 +1,5 @@
 import styles from './Logo.module.scss';
-import heroLogo from '../../../static/logo/logo-art-leto-1.png';
+import heroLogo from '../../../static/logo/logo-art-leto-2.png';
 
 const Logo = () => {
   return (
@@ -10,9 +10,8 @@ const Logo = () => {
         alt="Арт-лето в Бахрушинском музее"
       />
       <p className={styles.tagline}>
-        ТВОРЧЕСКИЕ ПРОГРАММЫ
-        <br />
-        ДЛЯ ДЕТЕЙ И ВЗРОСЛЫХ
+        <span className={styles.taglineLine}>ТВОРЧЕСКИЕ ПРОГРАММЫ</span>
+        <span className={styles.taglineLine}>ДЛЯ ДЕТЕЙ И ВЗРОСЛЫХ</span>
       </p>
     </div>
   );

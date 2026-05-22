@@ -3,13 +3,18 @@
   max-width: 920px;
   margin: 0 auto;
   padding: clamp(16px, 3vw, 32px);
-  font-family: Arial, sans-serif;
+  font-family: 'TT-Norms-Pro-Compact-Regular', 'TT-Norms-Pro-Compact-Normal',
+    system-ui, sans-serif;
   color: #121212;
   line-height: 1.6;
 
   h2 {
-    font-size: clamp(20px, 2.4vw, 28px);
+    font-family: 'TT-Nooks-Script-Bold', 'TT-Nooks-Script-Regular', Georgia, serif;
+    font-size: clamp(24px, 2.8vw, 36px);
     font-weight: 700;
+    font-synthesis: none;
+    line-height: 1.1;
+    color: #a41930;
     margin: 0 0 clamp(12px, 1.6vw, 16px);
   }
 }
@@ -18,9 +23,24 @@
 .block {
   font-size: clamp(18px, 2.1vw, 24px);
   margin: clamp(16px, 3vw, 40px) 0;
+
+  strong {
+    font-weight: 700;
+  }
 }
 
-/* Подзаголовок “Стоимость билетов” чуть ниже */
+.venueName {
+  font-family: 'TT-Nooks-Script-Bold', 'TT-Nooks-Script-Regular', Georgia, serif;
+  font-size: clamp(22px, 2.4vw, 30px);
+  font-weight: 700;
+  font-synthesis: none;
+  line-height: 1.15;
+  color: #a41930;
+  display: block;
+  margin-bottom: 6px;
+}
+
+/* Подзаголовок «Как нас найти» */
 .sectionTitle {
   margin-top: clamp(40px, 6vw, 72px);
 }
@@ -62,7 +82,9 @@
 
 
 .backButton {
-  font-family: var(--ff-sans); font-weight: 500;
+  font-family: 'TT-Norms-Pro-Compact-Regular', 'TT-Norms-Pro-Compact-Normal',
+    system-ui, sans-serif;
+  font-weight: 500;
   background: transparent;
   color: #333;
   padding: 0.5rem 1.2rem;

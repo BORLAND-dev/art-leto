@@ -35,21 +35,23 @@
 .sectionTitle {
   margin: 0;
   color: var(--title-accent);
-  font-family: 'TT-Nooks-Script-Regular', serif;
+  font-family: 'TT-Norms-Pro-Compact-Normal', 'TT-Norms-Pro-Compact-Regular', system-ui, sans-serif;
   font-size: clamp(24px, 2.8vw, 36px);
-  font-weight: 700;
+  font-weight: 900;
   line-height: 1.1;
   text-transform: uppercase;
+  letter-spacing: 0.06em;
 }
 
 .monthLabel {
   margin: 6px 0 0;
   color: var(--title-accent);
-  font-family: 'TT-Nooks-Script-Regular', serif;
+  font-family: 'TT-Norms-Pro-Compact-Normal', 'TT-Norms-Pro-Compact-Regular', system-ui, sans-serif;
   font-size: clamp(22px, 2.4vw, 32px);
-  font-weight: 700;
+  font-weight: 900;
   line-height: 1.1;
   text-transform: uppercase;
+  letter-spacing: 0.08em;
 }
 
 /* Контейнер сетки одного ряда */
@@ -265,7 +267,7 @@
 
 .type {
   color: #454545;
-  font-family: 'TT-Nooks-Script-Regular';
+  font-family: 'TT-Norms-Pro-Compact-Normal', 'TT-Norms-Pro-Compact-Regular', system-ui, sans-serif;
   text-transform: uppercase;
   opacity: .9;
   font-size: 12px;
@@ -287,10 +289,11 @@
 
 .title {
   color: var(--title-accent);
-  font-family: 'TT-Nooks-Script-Regular';
+  font-family: 'TT-Norms-Pro-Compact-Normal', 'TT-Norms-Pro-Compact-Regular', system-ui, sans-serif;
   text-transform: uppercase;
   margin-top: 8px;
   font-size: clamp(11px, 1.05vw, 15px);
+  font-weight: 800;
   line-height: var(--title-lh);
 
   display: -webkit-box;
@@ -303,7 +306,7 @@
   flex-shrink: 0;
 }
 
-/* Площадка — жёлтая метка (Дом-музей Щепкина) */
+/* Площадка — бирюзовая метка (Дом-музей Щепкина) */
 .tagVenue {
   display: inline-flex;
   align-items: center;
@@ -311,8 +314,8 @@
   margin: 6px 0 8px;
   padding: 5px 10px;
   border-radius: 8px;
-  background: #fff3b0;
-  color: #3d3d3d;
+  background: #b8c9ce;
+  color: #454545;
   font-family: 'TT-Norms-Pro-Compact-Regular', system-ui, sans-serif;
   font-size: clamp(10px, 0.75vw, 12px);
   font-weight: 600;
@@ -320,7 +323,7 @@
   max-width: 100%;
 }
 
-/* Площадка — бирюзовая «таблетка» (Мастерская Боровского) */
+/* Площадка — жёлтая «таблетка» (Музей-мастерская Д. Боровского) */
 .tagVenueBorovskiy {
   display: inline-flex;
   align-items: center;
@@ -328,8 +331,8 @@
   margin: 8px 0 10px;
   padding: 6px 14px;
   border-radius: 999px;
-  background: #b8c9ce;
-  color: #454545;
+  background: #fff3b0;
+  color: #3d3d3d;
   font-family: 'TT-Norms-Pro-Compact-Regular', system-ui, sans-serif;
   font-size: clamp(11px, 0.8vw, 13px);
   font-weight: 500;

@@ -24,4 +24,16 @@ export const PAGE_TICKET_URLS = {
     'https://www.bakhrushinmuseum.ru/buy-tickets/#/buy/event/8223/2026-08-20',
   page12:
     'https://www.bakhrushinmuseum.ru/buy-tickets/#/buy/event/8227/2026-08-28/15:00:00',
+  page13:
+    'https://www.bakhrushinmuseum.ru/buy-tickets/#/buy/event/8312/2026-06-18/19:00:00',
+  page14:
+    'https://www.bakhrushinmuseum.ru/buy-tickets/#/buy/event/8316/2026-06-25/19:00:00',
+  page15:
+    'https://www.bakhrushinmuseum.ru/buy-tickets/#/buy/event/8320/2026-07-16/19:00:00',
+  page16:
+    'https://www.bakhrushinmuseum.ru/buy-tickets/#/buy/event/8324/2026-07-23/19:00:00',
+  page17:
+    'https://www.bakhrushinmuseum.ru/buy-tickets/#/buy/event/8328/2026-08-06/19:00:00',
+  page18:
+    'https://www.bakhrushinmuseum.ru/buy-tickets/#/buy/event/8332/2026-08-13/19:00:00',
 } as const;

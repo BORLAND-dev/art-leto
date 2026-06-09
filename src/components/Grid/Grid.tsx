@@ -7,8 +7,6 @@ interface GridProps {
   events: IEvent[];
 }
 
-const CARDS_PER_ROW = 4;
-
 const ROW_HEADERS: { title?: string; month: string }[] = [
   { month: 'июнь' },
   { month: 'июль' },
@@ -24,12 +22,17 @@ export const GRID_MONTH_ANCHOR_IDS = [
 
 const isExternal = (url: string) => /^https?:\/\//i.test(url);
 
-const chunkEvents = (events: IEvent[], size: number): IEvent[][] => {
-  const rows: IEvent[][] = [];
-  for (let i = 0; i < events.length; i += size) {
-    rows.push(events.slice(i, i + size));
+const groupEventsByMonth = (events: IEvent[]): IEvent[][] => {
+  const groups = new Map<number, IEvent[]>();
+  for (const event of events) {
+    const monthIndex = event.monthIndex ?? 0;
+    const list = groups.get(monthIndex) ?? [];
+    list.push(event);
+    groups.set(monthIndex, list);
   }
-  return rows;
+  return Array.from(groups.entries())
+    .sort(([a], [b]) => a - b)
+    .map(([, monthEvents]) => monthEvents);
 };
 
 const parseEventDateTime = (
@@ -96,8 +99,11 @@ const EventCard = ({ event }: { event: IEvent }) => {
   const Title = (
     <div className={styles.titleRow}>
       <p className={styles.title}>{event.title}</p>
-      <span className={styles.ageBadge} aria-label="От 6 лет">
-        6+
+      <span
+        className={styles.ageBadge}
+        aria-label={`От ${(event.ageRating ?? '6+').replace('+', '')} лет`}
+      >
+        {event.ageRating ?? '6+'}
       </span>
     </div>
   );
@@ -199,7 +205,7 @@ const Grid = ({ events }: GridProps) => {
     return <div className={styles.empty}>События скоро появятся</div>;
   }
 
-  const rows = chunkEvents(events, CARDS_PER_ROW);
+  const rows = groupEventsByMonth(events);
 
   return (
     <div className={styles.wrapper}>

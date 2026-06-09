@@ -22,16 +22,6 @@ interface FooterProps {
 }
 
 const Footer: React.FC<FooterProps> = ({ scrollToSection }) => {
-  const handleGo = (index: number) => {
-    if (scrollToSection) {
-      scrollToSection(index);
-      return;
-    }
-    // Фолбэк: скроллим к секции по id "section-{index}"
-    const el = document.getElementById(`section-${index}`);
-    el?.scrollIntoView({ behavior: "smooth", block: "start" });
-  };
-
 const AddressBlock = () => (
   <div className={styles.addressBlock}>
     <span className={styles.addressTitle}>Место проведения:</span>
@@ -43,7 +33,7 @@ const AddressBlock = () => (
     (ст. м. Проспект Мира)
     <br />
     <br />
-    Музей-мастерская Давида Боровского
+    Музей-мастерская Д. Боровского
     <br />
     Адрес: Москва, Б. Афанасьевский переулок, д. 3, стр. 3
     <br />

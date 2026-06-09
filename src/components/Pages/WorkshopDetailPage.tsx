@@ -54,10 +54,15 @@ const WorkshopDetailPage: React.FC<WorkshopDetailConfig> = ({
   priceLabel,
   imageDateBadge,
   venueKey,
+  ageRating,
+  useCycleMeetingTitle,
   descriptionParagraphs,
 }) => {
   const navigate = useNavigate();
   const venueAddress = getVenueAddress(venueKey);
+  const headingTitle = useCycleMeetingTitle
+    ? `ЦИКЛ ВСТРЕЧ "${title}"`
+    : `«${title}»`;
 
   const handleBuyTicket = () =>
     window.open(ticketUrl, '_blank', 'noopener,noreferrer');
@@ -73,14 +78,12 @@ const WorkshopDetailPage: React.FC<WorkshopDetailConfig> = ({
 
       <div className={`${s.wrapper} ${s.wrapperDetailV3}`}>
         <main className={s.content}>
-          <h1 className={s.detailTitleV3}>
-            МАСТЕР-КЛАСС «{title}»
-          </h1>
+          <h1 className={s.detailTitleV3}>{headingTitle}</h1>
 
           <div className={s.tagsRow}>
             <span className={`${s.tagPill} ${s.tagTheme}`}>{themeTag}</span>
             <span className={`${s.tagPill} ${s.tagDuration}`}>{durationLabel}</span>
-            <span className={`${s.tagPill} ${s.tagAge}`}>6+</span>
+            <span className={`${s.tagPill} ${s.tagAge}`}>{ageRating}</span>
           </div>
 
           <div className={s.description}>

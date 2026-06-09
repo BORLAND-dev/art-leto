@@ -1,15 +1,33 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { YMaps, Map, Placemark, ZoomControl, GeolocationControl } from "@pbe/react-yandex-maps";
 import styles from "./Contacts.module.scss";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 
+const VENUE_MAPS = [
+  {
+    id: "schepkina",
+    name: "Дом-музей М.С. Щепкина",
+    address: "ул. Щепкина, 47, стр. 2, Москва",
+    metro: "ст. м. Проспект Мира",
+    mapSrc:
+      "https://yandex.ru/map-widget/v1/?ll=37.629079%2C55.781660&z=17&l=map&pt=37.629079%2C55.781660%2Cpm2rdm",
+    mapTitle: "Карта: Дом-музей М.С. Щепкина, ул. Щепкина, 47",
+  },
+  {
+    id: "borovskiy",
+    name: "Музей-мастерская Д. Боровского",
+    address: "Москва, Б. Афанасьевский переулок, д. 3, стр. 3",
+    metro: "ст. м. Кропоткинская",
+    mapSrc: "https://yandex.ru/map-widget/v1/-/CLU7QQZ4",
+    mapTitle:
+      "Карта: Мемориальный музей «Творческая мастерская театрального художника Давида Боровского»",
+  },
+] as const;
+
 const Contacts: React.FC = () => {
   const navigate = useNavigate();
 
-  // Координаты точки (пример для Б. Афанасьевского пер., 3с3)
-  const coords: [number, number] = [55.7475, 37.6008];
   return (
     <>
     <Header/>
@@ -20,47 +38,42 @@ const Contacts: React.FC = () => {
       </div>
 
       <section className={styles.contacts}>
-        <h2>Адрес и часы работы:</h2>
+        <h2 className={styles.pageTitle}>КОНТАКТЫ:</h2>
 
-        <p className={styles.block}>
-          <strong className={styles.venueName}>Дом-музей М.С. Щепкина</strong>
-          <strong>Адрес:</strong> ул. Щепкина, 47, стр. 2, Москва
-          <br />
-          <span className={styles.muted}>(ст. м. Проспект Мира)</span>
-        </p>
+        <div className={styles.contactInfo}>
+          <p className={styles.block}>
+            <strong>Телефон:</strong> +7 (499) 484-77-77
+          </p>
 
-        <p className={styles.block}>
-          <strong className={styles.venueName}>Музей-мастерская Давида Боровского</strong>
-          <strong>Адрес:</strong> Москва, Б. Афанасьевский переулок, д. 3, стр. 3
-          <br />
-          <span className={styles.muted}>(ст. м. Кропоткинская)</span>
-        </p>
+          {VENUE_MAPS.map((venue) => (
+            <p key={`${venue.id}-address`} className={styles.block}>
+              <strong>Адрес:</strong> {venue.address}
+              <br />
+              <span className={styles.muted}>({venue.metro})</span>
+            </p>
+          ))}
+        </div>
 
-        <p className={styles.block}>
-          <strong>Телефон:</strong> +7 (499) 484-77-77
-        </p>
+        <h2 className={styles.mapHeading}>Как нас найти</h2>
 
-        <p className={styles.block}>
-  <strong>Время работы:</strong>{" "}
-  <span className={styles.block}>
-    <br/>
-    Ср — Сб: 13:00–21:00<br />
-    Вс: 11:00–19:00<br />
-    Пн, Вт — выходной
-  </span>
-</p>
+        {VENUE_MAPS.map((venue) => (
+          <div key={venue.id} className={styles.venueBlock}>
+            <div className={styles.mapWrap}>
+              <iframe
+                title={venue.mapTitle}
+                src={venue.mapSrc}
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+              />
+            </div>
 
-        {/* Интерактивная карта */}
-       <h2 className={styles.sectionTitle}>Как нас найти</h2>
-<div className={styles.mapWrap}>
-  <iframe
-    src="https://yandex.ru/map-widget/v1/-/CLU7QQZ4"
-    width="100%"
-    height="100%"
-    style={{ border: 0 }}
-    allowFullScreen
-  />
-</div>
+            <p className={styles.block}>
+              <strong className={styles.venueName}>{venue.name}</strong>
+            </p>
+          </div>
+        ))}
 
       </section>
 

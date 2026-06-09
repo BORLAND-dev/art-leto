@@ -20,6 +20,12 @@ import Page9 from './components/Pages/Page9';
 import Page10 from './components/Pages/Page10';
 import Page11 from './components/Pages/Page11';
 import Page12 from './components/Pages/Page12';
+import Page13 from './components/Pages/Page13';
+import Page14 from './components/Pages/Page14';
+import Page15 from './components/Pages/Page15';
+import Page16 from './components/Pages/Page16';
+import Page17 from './components/Pages/Page17';
+import Page18 from './components/Pages/Page18';
 import AboutUs from './AboutUs';
 import Contacts from './Contacts';
 
@@ -151,6 +157,12 @@ const App = () => {
           <Route path="/Pages/Page10" element={<Page10 />} />
           <Route path="/Pages/Page11" element={<Page11 />} />
           <Route path="/Pages/Page12" element={<Page12 />} />
+          <Route path="/Pages/Page13" element={<Page13 />} />
+          <Route path="/Pages/Page14" element={<Page14 />} />
+          <Route path="/Pages/Page15" element={<Page15 />} />
+          <Route path="/Pages/Page16" element={<Page16 />} />
+          <Route path="/Pages/Page17" element={<Page17 />} />
+          <Route path="/Pages/Page18" element={<Page18 />} />
           <Route path="/AboutUs" element={<AboutUs />} />
           <Route path="/Contacts" element={<Contacts />} />
           <Route path="/Pages/Abonements" element={<Abonements />} />

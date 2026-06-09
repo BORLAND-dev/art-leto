@@ -9,14 +9,19 @@
   line-height: 1.6;
 
   h2 {
-    font-family: 'TT-Nooks-Script-Bold', 'TT-Nooks-Script-Regular', Georgia, serif;
+    font-family: 'TT-Norms-Pro-Compact-Normal', 'TT-Norms-Pro-Compact-Regular', system-ui, sans-serif;
     font-size: clamp(24px, 2.8vw, 36px);
-    font-weight: 700;
+    font-weight: 800;
     font-synthesis: none;
     line-height: 1.1;
     color: #a41930;
     margin: 0 0 clamp(12px, 1.6vw, 16px);
   }
+}
+
+.pageTitle {
+  font-size: clamp(34px, 4.2vw, 52px);
+  margin-bottom: clamp(20px, 2.5vw, 28px);
 }
 
 /* Отдельные абзацы с крупными отступами, как на макете */
@@ -30,9 +35,9 @@
 }
 
 .venueName {
-  font-family: 'TT-Nooks-Script-Bold', 'TT-Nooks-Script-Regular', Georgia, serif;
+  font-family: 'TT-Norms-Pro-Compact-Normal', 'TT-Norms-Pro-Compact-Regular', system-ui, sans-serif;
   font-size: clamp(22px, 2.4vw, 30px);
-  font-weight: 700;
+  font-weight: 800;
   font-synthesis: none;
   line-height: 1.15;
   color: #a41930;
@@ -40,9 +45,31 @@
   margin-bottom: 6px;
 }
 
-/* Подзаголовок «Как нас найти» */
-.sectionTitle {
-  margin-top: clamp(40px, 6vw, 72px);
+.contactInfo .block {
+  margin: clamp(12px, 2vw, 24px) 0;
+}
+
+.contactInfo .block:first-of-type {
+  margin-top: 0;
+}
+
+.mapHeading {
+  font-family: 'TT-Norms-Pro-Compact-Normal', 'TT-Norms-Pro-Compact-Regular', system-ui, sans-serif;
+  font-size: clamp(22px, 2.4vw, 30px);
+  font-weight: 800;
+  font-synthesis: none;
+  line-height: 1.15;
+  color: #a41930;
+  margin: clamp(32px, 5vw, 48px) 0 clamp(16px, 2vw, 20px);
+}
+
+/* Блок с картой */
+.venueBlock {
+  margin-top: clamp(24px, 4vw, 40px);
+
+  &:first-of-type {
+    margin-top: 0;
+  }
 }
 
 /* Список цен — без маркеров, с большими отступами */
@@ -109,9 +136,9 @@
 }
 
 .mapWrap {
-  height: 380px;         // сделайте выше/ниже по вкусу
+  height: 380px;
   border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 8px 24px rgba(0,0,0,.08);
-  margin-top: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  margin: 0 0 clamp(20px, 3vw, 32px);
 }

@@ -15,6 +15,10 @@ export interface IEvent {
     eventDateTime?: string;
     /** Цветная метка (площадка) */
     tagVenue?: string;
+    /** 0 — июнь, 1 — июль, 2 — август */
+    monthIndex?: number;
+    /** Возрастная метка на карточке, по умолчанию 6+ */
+    ageRating?: string;
 }
 
 

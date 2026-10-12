@@ -1,46 +1,56 @@
-# Getting Started with Create React App
+# Рождественский детектив — РД 2026
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Самостоятельный сайт на React, TypeScript и SCSS. Макет перенесён из Figma Design, сборка — Vite. Все изображения, шрифты и два фоновых видео хранятся в проекте; подключение к Figma для работы сайта не требуется.
 
-## Available Scripts
+## Запуск
 
-In the project directory, you can run:
+Нужен Node.js 22 или новее.
 
-### `yarn start`
+```sh
+npm ci
+npm run dev
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Публикация
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+```sh
+npm run build
+npm run preview
+```
 
-### `yarn test`
+Содержимое папки `build/` можно разместить на статическом хостинге (как раньше для art-leto). Локально: `npm run preview` → http://localhost:3000 .
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Предыдущий сайт «Арт-лето» лежит в `archive/art-leto-cra/` и на ветке `backup/art-leto-2026-10-12`. Настроена относительная база путей, в том числе для размещения в подпапке. Репозиторий GitHub и публикация в этой задаче не создавались; действующий сайт и домен не изменены.
 
-### `yarn build`
+## Где редактировать
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- `src/config/site.ts` — адрес продажи билетов и соцсети.
+- `src/components/Hero.tsx` — заголовок и даты.
+- `src/components/Details.tsx` — описание, адрес и телефоны.
+- `src/components/Scene.tsx` — фоновые видео с учётом настройки уменьшения движения.
+- `src/components/SocialLinks.tsx` — ссылки соцсетей.
+- `src/styles/global.scss` — оформление и адаптивность.
+- `src/static/` — изображения и шрифты.
+- `public/videos/` — локальные фоновые видео.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Билеты
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Ссылка ещё не предоставлена. Пока кнопка «Купить билет» открывает диалог с телефонами музея. Когда продажа откроется, замените пустую строку `ticketUrl` в `src/config/site.ts` на HTTPS-адрес и выполните сборку. Кнопка начнёт открывать указанный адрес.
 
-### `yarn eject`
+## Дизайн
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Основа — три фрейма Desktop (1280), Tablet (800), Mobile (375) из файла https://www.figma.com/design/P9mAneH8WlUSPfmdzQwKrK/Untitled?node-id=1-161 . Между контрольными ширинами элементы масштабируются пропорционально. Пороговые значения: 600 и 1023 px. Тексты и размер мобильного шрифта сохранены по макету; для повышения читаемости можно отдельно увеличить их и пересмотреть высоту секций.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Фоновые видео, шрифты и favicon взяты с предоставленного действующего сайта https://rd.bakhrushinmuseum.ru/ . Изображения заголовка, ленты, кнопки и SVG — из макета. Экспортные изображения целой страницы не используются как интерфейс.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Проверка
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- `npm run build` — проверка TypeScript и сборка Vite прошли.
+- Просмотрены версии при ширине окна 1280, 800 и 375 px.
+- На мобильной ширине: ширина документа 375 px, горизонтального переполнения нет, высота страницы 1515 px, как в макете.
+- Все изображения загрузились, оба локальных видео воспроизводятся.
+- Проверены открытие и закрытие диалога билетов, адреса телефонных ссылок и соцсетей.
+- В консоли браузера нет предупреждений и ошибок.
+- Настройка уменьшения движения реализована; отдельно в настройках ОС не проверялась.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Ссылку продажи билетов нужно будет добавить перед запуском онлайн-продажи. Анимация использует исходные видео, поэтому положение персонажа зависит от текущего кадра.

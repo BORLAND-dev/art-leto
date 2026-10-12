@@ -1,0 +1,92 @@
+@font-face { font-family: Norms; src: url('../static/fonts/normal.woff'); font-weight: 400; font-display: swap; }
+@font-face { font-family: Norms; src: url('../static/fonts/medium.woff'); font-weight: 500; font-display: swap; }
+* { box-sizing: border-box; }
+body { margin: 0; background: #02010b; color: #e6b041; font-family: Norms, sans-serif; }
+p, h1 { margin: 0; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; cursor: pointer; }
+a:focus-visible, button:focus-visible { outline: 2px solid #fff0b8; outline-offset: 6px; }
+.site { container-type: inline-size; isolation: isolate; overflow: clip; max-width: 1920px; margin: auto; }
+.hero, .details { position: relative; }
+.hero { height: 147.578125cqw; }
+.details { height: 141.796875cqw; }
+.scene { position: absolute; display: block; object-fit: cover; pointer-events: none; }
+.scene--hero { z-index: 1; width: 114.53125cqw; height: 162.34375cqw; left: -7.890625cqw; top: -15.15625cqw; }
+.scene--details { z-index: 0; width: 124.6875cqw; height: 176.70944cqw; left: -12.34375cqw; top: -20.850067cqw; }
+/* Shared stacking order: backgrounds 0–1, feathered seam 2, readable content 3.
+   The opaque centre covers both video edges, even when their bounds differ. */
+.scene-fade { position: absolute; z-index: 2; bottom: -20cqw; left: 0; width: 100%; height: 40cqw; background: linear-gradient(180deg, rgba(9,10,19,0) 0%, rgba(9,10,19,.35) 18%, rgba(9,10,19,.88) 36%, #090a13 46%, #090a13 54%, rgba(9,10,19,.88) 64%, rgba(9,10,19,.35) 82%, rgba(9,10,19,0) 100%); pointer-events: none; }
+.hero__content { position: relative; z-index: 3; display: flex; flex-direction: column; align-items: center; width: 82.1875%; margin: auto; padding-top: 6.3671875cqw; }
+.museum-logo { width: 10cqw; height: 5.15625cqw; position: relative; }
+.museum-logo img { display: block; transform-origin: top left; scale: calc(var(--canvas-width, 1280) / 1280); }
+.hero__heading { width: 100%; position: relative; margin-top: 3.671875cqw; height: 35.78125cqw; }
+.hero__eyebrow, .hero__date { font-size: 3.125cqw; font-weight: 500; text-align: center; text-transform: uppercase; letter-spacing: .03125cqw; line-height: 1.28; }
+h1 { position: absolute; top: 2.65625cqw; width: 100%; height: 26.328125cqw; }
+h1 img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.hero__ribbon { position: absolute; top: 21.640625cqw; left: 7.367%; width: 85.266%; height: 19.140625cqw; object-fit: cover; }
+.hero__date { margin-top: 3.671875cqw; }
+.details__content { position: relative; z-index: 3; display: flex; flex-direction: column; align-items: center; gap: 4.04835cqw; padding-top: 10.078125cqw; width: 71.328125%; margin: auto; text-align: center; }
+.details__intro { width: 91.8018%; font-size: 2.57039cqw; line-height: 1.28; text-box-trim: trim-both; text-box-edge: cap alphabetic; }
+.details__contacts { width: 100%; font-size: 2.05633cqw; font-style: normal; line-height: 1.28; text-box-trim: trim-both; text-box-edge: cap alphabetic; }
+.details__contacts p + p { margin-top: 1.28519cqw; }
+.ticket { border: 0; padding: 0; background: none; display: block; width: 33.73627cqw; height: 11.24543cqw; transition: transform .3s ease-out; }
+.ticket img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.ticket:hover { transform: scale(1.2); }
+.socials { display: flex; align-items: center; justify-content: space-between; width: 45.140125cqw; }
+.socials a { position: relative; display: block; width: 3.47cqw; height: 3.47cqw; transition: transform .3s ease-out; }
+.socials a:hover { transform: scale(1.2); }
+.social-icon { position: absolute; top: 0; left: 0; width: 44.4162px; height: 44.4162px; transform-origin: top left; scale: calc(var(--canvas-width, 1280) / 1280); }
+.social-icon img { position: absolute; display: block; }
+.social-icon__circle { top: 1.2px; left: 1px; }
+.social-icon__shape { top: 0; left: 0; }
+.social-icon__shape--flip { transform: scaleY(-1); }
+.social-icon__center { top: 14.1px; left: 14.35px; }
+.booking-dialog { color: #e6b041; background: #090a13; border: 1px solid #e6b041; border-radius: 16px; max-width: min(440px,90vw); padding: 0; font-size: 18px; }
+.booking-dialog::backdrop { background: #000b; }
+.booking-dialog__inner { padding: 30px; display: flex; flex-direction: column; gap: 16px; text-align: center; }
+.booking-dialog h2 { margin: 0; font-size: 26px; }
+.booking-dialog button { background: #e6b041; color: #090a13; border: none; border-radius: 6px; padding: 10px 24px; }
+@media (min-width: 601px) and (max-width: 1023px) {
+  .hero { height: 141.375cqw; }
+  .details { height: 183.375cqw; }
+  .scene--hero { width: 100cqw; height: 141.625cqw; left: 0; top: -.125cqw; }
+  .scene--details { width: 146.25cqw; height: 207.25cqw; left: -23.125cqw; top: -6.75cqw; }
+  .scene-fade { height: 40cqw; bottom: -20cqw; }
+  .hero__content { padding-top: 6.75642cqw; width: 82.242%; }
+  .hero__heading { margin-top: 3.67431cqw; height: 35.02196cqw; }
+  h1 { top: 1.875cqw; height: 26.34558cqw; }
+  .hero__ribbon { top: 20.72058cqw; height: 19.15331cqw; }
+  .hero__date { margin-top: 3.67431cqw; }
+  .details__content { padding-top: 11.375cqw; width: 99.34172%; gap: 6.625cqw; }
+  .details__intro { font-size: 3.57988cqw; }
+  .details__contacts { font-size: 2.86388cqw; }
+  .details__contacts p + p { margin-top: 1.78994cqw; }
+  .ticket { width: 46.98595cqw; height: 15.66198cqw; }
+  .socials { width: 72.75cqw; }
+  .socials a { width: 5.59615cqw; height: 5.59615cqw; }
+  .social-icon { scale: calc(var(--canvas-width, 1280) / 794); }
+}
+@media (max-width: 600px) {
+  .hero { height: 233.06667cqw; }
+  .details { height: 170.93333cqw; }
+  .scene--hero { width: 177.06667cqw; height: 250.93333cqw; left: -38.4cqw; top: -18.93333cqw; }
+  .scene--details { width: 145.6cqw; height: 206.4cqw; left: -22.66667cqw; top: 0; }
+  .scene-fade { height: 44cqw; bottom: -22cqw; }
+  .hero__content { padding-top: 12.8cqw; width: 82.4551%; }
+  .museum-logo { width: 10.03256cqw; height: 5.17304cqw; }
+  .museum-logo img { scale: calc(var(--canvas-width, 1280) / 1275.85); }
+  .hero__heading { margin-top: 7.73333cqw; height: 33.23285cqw; }
+  .hero__eyebrow, .hero__date { font-size: 3.1352cqw; letter-spacing: .03135cqw; }
+  h1 { top: 0; height: 26.41385cqw; }
+  .hero__ribbon { top: 20.54718cqw; height: 19.20295cqw; }
+  .hero__date { margin-top: 7.73333cqw; }
+  .details__content { padding-top: 7.73333cqw; width: 86.24226%; gap: 7.2cqw; }
+  .details__intro { font-size: 3.107733cqw; }
+  .details__contacts { font-size: 2.486133cqw; }
+  .details__contacts p + p { margin-top: 1.553867cqw; }
+  .ticket { width: 40.79026cqw; height: 13.59675cqw; }
+  .socials { width: 78.93333cqw; }
+  .socials a { width: 6.07179cqw; height: 6.07179cqw; }
+  .social-icon { scale: calc(var(--canvas-width, 1280) / 731.55); }
+}
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; } }

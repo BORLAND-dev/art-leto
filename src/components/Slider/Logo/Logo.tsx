@@ -9,10 +9,6 @@ const Logo = () => {
         className={styles.heroImage}
         alt="Арт-лето в Бахрушинском музее"
       />
-      <p className={styles.tagline}>
-        <span className={styles.taglineLine}>ТВОРЧЕСКИЕ ПРОГРАММЫ</span>
-        <span className={styles.taglineLine}>ДЛЯ ДЕТЕЙ И ВЗРОСЛЫХ</span>
-      </p>
     </div>
   );
 };

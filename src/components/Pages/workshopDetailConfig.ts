@@ -10,9 +10,9 @@ import page9Image from '../../static/images/129A6577.JPG';
 import page10Image from '../../static/images/129A7175.JPG';
 import page11Image from '../../static/images/129A0174.JPG';
 import page12Image from '../../static/images/DSC_9579.jpg';
-import page13Image from '../../static/images/18.06.jpg';
-import page14Image from '../../static/images/25,06.jpg';
-import page15Image from '../../static/images/16,07.jpg';
+import page13Image from '../../static/images/18.06.Точка за точкой. Успокаивающие рисунки.jpg';
+import page14Image from '../../static/images/25.06.Райский сад.Ботанические узоры.jpg';
+import page15Image from '../../static/images/16.07.Обман зрения.jpg';
 import page16Image from '../../static/images/23,07.jpg';
 import page17Image from '../../static/images/06,08.jpg';
 import page18Image from '../../static/images/13,08.jpg';
@@ -48,7 +48,7 @@ export interface WorkshopDetailConfig {
   priceLabel: string;
   venueKey: VenueKey;
   ageRating: string;
-  /** false — только «название», без префикса «ЦИКЛ ВСТРЕЧ» */
+  /** false — только «название» без служебного префикса */
   useCycleMeetingTitle: boolean;
   descriptionParagraphs: string[];
 }
@@ -131,7 +131,8 @@ function buildConfig(
 
 const DEFAULT_DURATION = 90;
 const DEFAULT_PRICE = 1300;
-const THEME_DEFAULT = 'Мастер-класс';
+const FAIRY_CYCLE_THEME = 'Цикл встреч сказочная мозаика';
+const KALEIDOSCOPE_THEME = 'Театральный калейдоскоп';
 
 const DRAWING_BORDERS_DESCRIPTION = [
   'На встрече участники познакомятся с популярным методом создания узоров из простых повторяющихся элементов.',
@@ -149,7 +150,7 @@ const DRAWING_CYCLE_DESCRIPTION = [
 export const page1Config = buildConfig({
   title: 'С ЧЕГО НАЧИНАЕТСЯ ТЕАТР',
   useCycleMeetingTitle: false,
-  themeTag: THEME_DEFAULT,
+  themeTag: FAIRY_CYCLE_THEME,
   image: page1Image,
   imageAlt: 'Фото занятия «С чего начинается театр»',
   ticketUrl: PAGE_TICKET_URLS.page1,
@@ -165,7 +166,7 @@ export const page1Config = buildConfig({
 
 export const page2Config = buildConfig({
   title: 'ЗОЛОТОЙ ПЕТУШОК',
-  themeTag: 'Сказочная мозаика',
+  themeTag: FAIRY_CYCLE_THEME,
   image: page2Image,
   imageAlt: 'Фото занятия «Золотой петушок»',
   ticketUrl: PAGE_TICKET_URLS.page2,
@@ -181,7 +182,7 @@ export const page2Config = buildConfig({
 
 export const page3Config = buildConfig({
   title: 'ЖИРОФЛЕ-ЖИРОФЛЯ',
-  themeTag: THEME_DEFAULT,
+  themeTag: FAIRY_CYCLE_THEME,
   image: page3Image,
   imageAlt: 'Фото занятия «Жирофле-Жирофля»',
   ticketUrl: PAGE_TICKET_URLS.page3,
@@ -197,7 +198,7 @@ export const page3Config = buildConfig({
 
 export const page4Config = buildConfig({
   title: 'ИВАН-ЦАРЕВИЧ',
-  themeTag: THEME_DEFAULT,
+  themeTag: FAIRY_CYCLE_THEME,
   image: page4Image,
   imageAlt: 'Фото занятия «Иван-царевич»',
   ticketUrl: PAGE_TICKET_URLS.page4,
@@ -214,7 +215,7 @@ export const page4Config = buildConfig({
 
 export const page5Config = buildConfig({
   title: 'ЖЕМЧУЖИНА АДАЛЬМИНЫ',
-  themeTag: THEME_DEFAULT,
+  themeTag: FAIRY_CYCLE_THEME,
   image: page5Image,
   imageAlt: 'Фото занятия «Жемчужина Адальмины»',
   ticketUrl: PAGE_TICKET_URLS.page5,
@@ -231,7 +232,7 @@ export const page5Config = buildConfig({
 
 export const page6Config = buildConfig({
   title: 'ГЕНЗЕЛЬ И ГРЕТЕЛЬ',
-  themeTag: THEME_DEFAULT,
+  themeTag: FAIRY_CYCLE_THEME,
   image: page6Image,
   imageAlt: 'Фото занятия «Гензель и Гретель»',
   ticketUrl: PAGE_TICKET_URLS.page6,
@@ -247,7 +248,7 @@ export const page6Config = buildConfig({
 
 export const page7Config = buildConfig({
   title: 'ЛЮБОВЬ К ТРЕМ АПЕЛЬСИНАМ',
-  themeTag: THEME_DEFAULT,
+  themeTag: FAIRY_CYCLE_THEME,
   image: page7Image,
   imageAlt: 'Фото занятия «Любовь к трём апельсинам»',
   ticketUrl: PAGE_TICKET_URLS.page7,
@@ -263,7 +264,7 @@ export const page7Config = buildConfig({
 
 export const page8Config = buildConfig({
   title: 'СКАЗКИ АНДЕРСЕНА',
-  themeTag: THEME_DEFAULT,
+  themeTag: FAIRY_CYCLE_THEME,
   image: page8Image,
   imageAlt: 'Фото занятия «Сказки Андерсена»',
   ticketUrl: PAGE_TICKET_URLS.page8,
@@ -279,7 +280,7 @@ export const page8Config = buildConfig({
 
 export const page9Config = buildConfig({
   title: 'СОЛОВЕЙ',
-  themeTag: THEME_DEFAULT,
+  themeTag: FAIRY_CYCLE_THEME,
   image: page9Image,
   imageAlt: 'Фото занятия «Соловей»',
   ticketUrl: PAGE_TICKET_URLS.page9,
@@ -295,7 +296,7 @@ export const page9Config = buildConfig({
 
 export const page10Config = buildConfig({
   title: 'СКАЗКА О ЦАРЕ САЛТАНЕ',
-  themeTag: 'Сказочная мозаика',
+  themeTag: FAIRY_CYCLE_THEME,
   image: page10Image,
   imageAlt: 'Фото занятия «Сказка о царе Салтане»',
   ticketUrl: PAGE_TICKET_URLS.page10,
@@ -311,7 +312,7 @@ export const page10Config = buildConfig({
 
 export const page11Config = buildConfig({
   title: 'ПРИНЦЕССА ТУРАНДОТ',
-  themeTag: THEME_DEFAULT,
+  themeTag: FAIRY_CYCLE_THEME,
   image: page11Image,
   imageAlt: 'Фото занятия «Принцесса Турандот»',
   ticketUrl: PAGE_TICKET_URLS.page11,
@@ -327,7 +328,7 @@ export const page11Config = buildConfig({
 
 export const page12Config = buildConfig({
   title: 'СКАЗОЧНАЯ ТЕАТРАЛЬНАЯ ВЕЧЕРИНКА',
-  themeTag: THEME_DEFAULT,
+  themeTag: FAIRY_CYCLE_THEME,
   image: page12Image,
   imageAlt: 'Фото занятия «Сказочная театральная вечеринка»',
   ticketUrl: PAGE_TICKET_URLS.page12,
@@ -343,7 +344,7 @@ export const page12Config = buildConfig({
 
 export const page13Config = buildConfig({
   title: 'ТОЧКА ЗА ТОЧКОЙ, ИЛИ УСПОКАИВАЮЩИЕ РИСУНКИ',
-  themeTag: THEME_DEFAULT,
+  themeTag: KALEIDOSCOPE_THEME,
   image: page13Image,
   imageAlt: 'Фото занятия «Точка за точкой, или успокаивающие рисунки»',
   ticketUrl: PAGE_TICKET_URLS.page13,
@@ -358,7 +359,7 @@ export const page13Config = buildConfig({
 
 export const page14Config = buildConfig({
   title: 'РАЙСКИЙ САД: РИСУЕМ БОТАНИЧЕСКИЕ УЗОРЫ',
-  themeTag: THEME_DEFAULT,
+  themeTag: KALEIDOSCOPE_THEME,
   image: page14Image,
   imageAlt: 'Фото занятия «Райский сад: рисуем ботанические узоры»',
   ticketUrl: PAGE_TICKET_URLS.page14,
@@ -373,7 +374,7 @@ export const page14Config = buildConfig({
 
 export const page15Config = buildConfig({
   title: 'ОБМАН ЗРЕНИЯ, ИЛИ ОПТИЧЕСКОЕ ИСКУССТВО',
-  themeTag: THEME_DEFAULT,
+  themeTag: KALEIDOSCOPE_THEME,
   image: page15Image,
   imageAlt: 'Фото занятия «Обман зрения, или оптическое искусство»',
   ticketUrl: PAGE_TICKET_URLS.page15,
@@ -392,7 +393,7 @@ export const page15Config = buildConfig({
 
 export const page16Config = buildConfig({
   title: 'ЦВЕТНЫЕ СНЫ: АКВАРЕЛЬНАЯ ИМПРОВИЗАЦИЯ',
-  themeTag: THEME_DEFAULT,
+  themeTag: KALEIDOSCOPE_THEME,
   image: page16Image,
   imageAlt: 'Фото занятия «Цветные сны: акварельная импровизация»',
   ticketUrl: PAGE_TICKET_URLS.page16,
@@ -412,7 +413,7 @@ export const page16Config = buildConfig({
 
 export const page17Config = buildConfig({
   title: 'ВСЁ НАОБОРОТ: РИСУЕМ БЕЛЫМ ПО ЧЁРНОМУ',
-  themeTag: THEME_DEFAULT,
+  themeTag: KALEIDOSCOPE_THEME,
   image: page17Image,
   imageAlt: 'Фото занятия «Всё наоборот: рисуем белым по чёрному»',
   ticketUrl: PAGE_TICKET_URLS.page17,
@@ -433,7 +434,7 @@ export const page17Config = buildConfig({
 export const page18Config = buildConfig({
   title: 'СВЕТ ИЗ ТЕМНОТЫ: РИСУНОК ПРОЦАРАПЫВАНИЕМ',
   useCycleMeetingTitle: false,
-  themeTag: THEME_DEFAULT,
+  themeTag: KALEIDOSCOPE_THEME,
   image: page18Image,
   imageAlt: 'Фото занятия «Свет из темноты: рисунок процарапыванием»',
   ticketUrl: PAGE_TICKET_URLS.page18,

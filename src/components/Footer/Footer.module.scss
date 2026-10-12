@@ -1,356 +1,348 @@
-/* =================== Footer.module.scss (обновлённый) =================== */
-
-/* Тема — те же токены, что и в header */
-:root {
-  --brand: #A31A30;
-  --brand-700: #8c182a;
-  --text: #1f1f1f;
-  --muted: #6b6b6b;
-  --bg: #ffffff;
-  --line: #e9e9e9;
-}
-
-/* Контейнер футера: светлый фон, верхняя граница, аккуратные отступы */
 .root {
+  --footer-brand: #8a1d33;
+  --footer-brand-dark: #701628;
   width: 100%;
-  background: var(--bg);
-  color: var(--text);
-  border-top: 1px solid var(--line);
+  background-color: #f5b800;
+  color: #1f1f1f;
   box-sizing: border-box;
-  padding: 20px 24px 28px;
+  padding: 18px 28px 16px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 16px;
 }
 
-/* Верхняя строка: логотип — адрес — телефоны */
 .top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: start;
+  column-gap: 28px;
 }
 
-/* Нижняя строка: соцсети — партнёры */
-.bottom {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  flex-wrap: wrap;
+.contacts {
+  min-width: 280px;
+  justify-self: start;
 }
 
-/* Логотип — такие же размеры, как в header */
+.addressBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.addressItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-family: "TT-Norms-Pro-Compact-Regular", "TT-Norms-Pro-Compact-Normal", sans-serif;
+  font-size: 14px;
+  line-height: 1.25;
+  max-width: 520px;
+
+  img {
+    width: 15px;
+    height: 15px;
+    margin-top: 2px;
+    flex-shrink: 0;
+  }
+}
+
+.centerBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-self: center;
+  margin: 0 auto;
+  text-align: center;
+  gap: 10px;
+}
+
 .logo {
-  width: 220px;
+  width: 132px;
   height: auto;
   display: block;
 }
 
-/* Адрес + иконка поиска */
-.contacts {
+.monthNav {
   display: flex;
   flex-direction: column;
-  position: relative;
+  gap: 4px;
+  align-items: center;
 
-  a,
-  .addressBlock {
-    width: 100%;
-    display: inline-flex;
-    line-height: 1.4;
-    color: var(--muted);
-    text-decoration: none;
-    transition: color .2s ease;
-  }
+  button {
+    border: none;
+    background: transparent;
+    font-family: "TT-Norms-Pro-Compact-Normal", sans-serif;
+    font-size: 18px;
+    line-height: 1;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    color: #161616;
+    padding: 1px 0;
+    text-transform: uppercase;
 
-  a:hover {
-    color: var(--text);
+    &:hover {
+      color: var(--footer-brand);
+    }
   }
 }
 
-/* Блок с иконкой слева */
-.first {
+.rightBlock {
   display: flex;
-  align-items: flex-start;
-  gap: 12px;
-
-  img {
-    width: 18px;
-    height: 18px;
-    flex: 0 0 18px;
-    margin: 2px 0 0;
-  }
-
-  a,
-  .addressBlock {
-    color: var(--muted);
-    text-decoration: none;
-    transition: color .2s ease;
-  }
-
-  a:hover {
-    color: var(--text);
-  }
+  justify-content: flex-end;
+  justify-self: end;
 }
 
-/* Телефоны: как в header — колонкой, спокойные ссылки */
+.phoneBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+}
+
 .telephone {
   display: flex;
   align-items: center;
-  gap: 10px;
-  color: var(--muted);
-  font-size: 14px;
-font-family: 'TT-Norms-Pro-Compact-Normal';
-  img { width: 18px; height: 18px; }
+  gap: 8px;
 
-  svg { width: 18px; height: 18px; }
-
-  div { display: flex; flex-direction: column; }
-}
-
-/* Общий стиль ссылок в колонке (телефоны и т.п.) */
-.col {
-  a {
-    cursor: pointer;
-    color: var(--text);
-    text-decoration: none;
-    transition: color .2s ease, opacity .2s ease;
-    &:hover { color: var(--text); opacity: .85; }
+  img {
+    width: 16px;
+    height: 16px;
   }
 }
 
-/* ===== Соцсети (используем «круглые кнопки» как в header) ===== */
+.col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+
+  a {
+    color: #1e1e1e;
+    text-decoration: none;
+    font-family: "TT-Norms-Pro-Compact-Normal", sans-serif;
+    font-size: 14px;
+    line-height: 1.15;
+
+    &:hover {
+      color: var(--footer-brand);
+    }
+  }
+}
+
+.ticketBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 42px;
+  padding: 0 24px;
+  border-radius: 21px;
+  background: var(--footer-brand);
+  color: #fff;
+  text-decoration: none;
+  font-family: "TT-Norms-Pro-Compact-Normal", sans-serif;
+  font-size: 14px;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+
+  &:hover {
+    background: var(--footer-brand-dark);
+  }
+}
+
+.bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+
 .menu {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 0;
-  list-style: none;
-  margin: 0;
+  gap: 8px;
 
-  /* каждая ссылка — круглая кнопка */
   a {
-    --size: 38px;
-    width: var(--size);
-    height: var(--size);
-    border-radius: 50%;
-    background: #f5f5f5;
-    border: 1px solid #e8e8e8;
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    background: #111;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 1px 2px rgba(0,0,0,.04);
-    transition: transform .18s ease, box-shadow .18s ease, background-color .18s ease, border-color .18s ease;
+    transition: transform 0.2s ease;
 
     img {
-      width: 20px;
-      height: 20px;
-      pointer-events: none;
-      transition: transform .22s ease, opacity .22s ease;
+      width: 12px;
+      height: 12px;
+      filter: brightness(0) invert(1);
       display: block;
     }
 
     &:hover {
-      transform: translateY(-2px);
-      background: #ffffff;
-      border-color: #dedede;
-      box-shadow: 0 4px 10px rgba(0,0,0,.08);
-
-      img { transform: scale(1.06) rotate(6deg); opacity: .95; }
-    }
-
-    &:active {
-      transform: scale(.96);
-      box-shadow: 0 2px 6px rgba(0,0,0,.12);
-    }
-
-    &:focus-visible {
-      outline: none;
-      box-shadow: 0 0 0 3px rgba(163,26,48,.18);
-      border-color: rgba(163,26,48,.5);
+      transform: translateY(-1px);
     }
   }
 }
 
-/* ===== Партнёры — аккуратная полка логотипов, как в хедер-иконках ===== */
 .partners {
-  margin-top: 0;
-  text-align: center;
-  flex-wrap: nowrap;
-
-  span {
-    display: block;
-    margin-bottom: 10px;
-    font-weight: 600;
-    color: var(--muted);
-     flex-wrap: nowrap;
-  }
+  margin-left: auto;
 }
 
 .partnerLogos {
   display: flex;
-  
-  justify-content: center;
-  gap: 20px;
-   flex-wrap: nowrap;
+  align-items: center;
+  gap: 24px;
 
   a {
     display: inline-flex;
     align-items: center;
-    justify-content: center;
-    padding: 10px 14px;
-    border-radius: 10px;
-    background: #ffffff;
-    border: 1px solid #ececec;
-    transition: transform .18s ease, box-shadow .18s ease, background-color .18s ease, border-color .18s ease;
-
-    &:hover {
-      transform: translateY(-2px);
-      background: #fff;
-      border-color: #e3e3e3;
-     
-    }
-
-    &:active { transform: scale(.98); }
   }
 
   img {
-    max-height: 50px;
+    display: block;
+    max-height: 38px;
     width: auto;
     object-fit: contain;
-    display: block;
-    filter: saturate(.95) contrast(1.02);
+    mix-blend-mode: multiply;
   }
 }
 
-/* ===== Мобильная «панель месяцев» — совпадает по стилю с header-кнопками ===== */
-.mobilePanel {
-  margin: 0 0 6px;
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  flex-wrap: wrap;
-
-  button {
-    border: 1px solid #eeeeee;
-    background-color: #f6f6f6;
-    padding: 10px 16px;
-    border-radius: 40px;
-    text-transform: uppercase;
-    font-family: 'TT-Norms-Pro-Compact-Normal';
-    font-size: 12px;
-    line-height: 1;
-    transition: background-color .2s ease, color .2s ease, border-color .2s ease, transform .1s ease;
-    cursor: pointer;
-
-    &:hover {
-      background-color: #ffffff;
-      border-color: #e7e7e7;
-    }
-
-    &:active {
-      transform: scale(.98);
-      background-color: var(--brand);
-      color: #fff;
-      border-color: var(--brand);
-    }
-  }
-}
-
-/* Мобильная укладка логотип + телефоны */
 .mobileMMM {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 14px;
-
-  a img { width: 160px; height: auto; }
+  display: none;
 }
 
-/* ===== Адаптив ===== */
+.mobilePanel {
+  display: none;
+}
+
 @media (max-width: 1024px) {
-  .root { padding: 16px; gap: 16px; }
-  .logo { width: 190px; }
-  .top { flex-wrap: wrap; align-items: flex-start; gap: 12px; }
-  .bottom { gap: 12px; }
-
-  .menu a { --size: 36px; }
-}
-
-@media (max-width: 768px) {
-  .logo { width: 160px; }
+  .root {
+    padding: 16px;
+  }
 
   .top {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 14px;
+    grid-template-columns: 1fr;
+    row-gap: 14px;
+    justify-items: center;
+  }
+
+  .contacts {
+    order: 1;
+  }
+
+  .centerBlock {
+    order: 2;
+    width: 100%;
+    justify-self: stretch;
+  }
+
+  .rightBlock {
+    order: 3;
+    justify-content: flex-start;
+  }
+
+  .phoneBlock,
+  .col {
+    align-items: flex-start;
   }
 
   .bottom {
     flex-direction: column;
-    align-items: stretch;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .partners {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .root {
+    padding: 14px 12px;
     gap: 14px;
   }
 
-  .contacts a { font-size: 14px; }
-  .col a { font-size: 14px; }
+  .top {
+    row-gap: 12px;
+  }
 
-  /* Уменьшаем размер партнеров для мобильных */
-  .partnerLogos { 
-    gap: 12px;
-    
-    /* Выравниваем все элементы по одной высоте */
+  .contacts {
+    min-width: 0;
+    width: 100%;
+    max-width: 360px;
+    justify-self: center;
+  }
+
+  .addressItem {
+    font-size: 12px;
+    line-height: 1.3;
+
+    img {
+      width: 13px;
+      height: 13px;
+      margin-top: 1px;
+    }
+  }
+
+  .logo {
+    width: 120px;
+  }
+
+  .monthNav {
+    gap: 3px;
+
+    button {
+      font-size: 16px;
+    }
+  }
+
+  .rightBlock {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .phoneBlock,
+  .col {
     align-items: center;
   }
-  
-  .partnerLogos a { 
-    padding: 6px 10px;
-    height: 50px; /* Фиксированная высота для выравнивания */
-    display: flex;
+
+  .telephone {
+    justify-content: center;
+  }
+
+  .ticketBtn {
+    height: 40px;
+    padding: 0 22px;
+    font-size: 13px;
+  }
+
+  .bottom {
     align-items: center;
   }
-  
-  .partnerLogos img { 
-    max-height: 35px; /* Уменьшенный размер для мобильных */
-    width: auto;
+
+  .menu {
+    width: 100%;
+    justify-content: center;
+    gap: 10px;
+
+    a {
+      width: 22px;
+      height: 22px;
+    }
+  }
+
+  .partners {
+    width: 100%;
+  }
+
+  .partnerLogos {
+    justify-content: center;
+    gap: 14px;
+    flex-wrap: wrap;
+
+    img {
+      max-height: 32px;
+    }
   }
 }
-
-/* Уважение prefers-reduced-motion */
-@media (prefers-reduced-motion: reduce) {
-  .menu a,
-  .menu a img,
-  .partnerLogos a,
-  .partnerLogos a img,
-  .mobilePanel button {
-    transition: none !important;
-    animation: none !important;
-  }
-}
-
-.addressBlock {
-  flex-direction: column;
-  font-family: 'TT-Norms-Pro-Compact-Regular', 'TT-Norms-Pro-Compact-Normal', sans-serif;
-  font-size: 22px;
-  line-height: 1.45;
-}
-
-.addressTitle {
-  font-weight: 600;
-  color: var(--text);
-}
-
-@media (min-width: 768px) {
-  .addressBlock {
-    font-size: 23px;
-    line-height: 1.5;
-  }
-}
-
-@media (min-width: 1200px) {
-  .addressBlock {
-    font-size: 24px;
-    line-height: 1.5;
-  }
-}
-

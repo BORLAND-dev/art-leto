@@ -1,8 +1,9 @@
 import React from "react";
-import { isMobile } from "react-device-detect";
+import { useLocation, useNavigate } from "react-router-dom";
 import styles from "./Footer.module.scss";
+import { GRID_MONTH_ANCHOR_IDS } from "../Grid/Grid";
 
-import logo from "../../static/images/BTM.svg";
+import logo from "../../static/images/BTM-mark-burgundy.svg";
 import tg from "../../static/icons/tg.svg";
 import vk from "../../static/icons/vk.svg";
 import ok from "../../static/icons/ok.svg";
@@ -21,33 +22,64 @@ interface FooterProps {
   scrollToSection?: (index: number) => void;
 }
 
-const Footer: React.FC<FooterProps> = ({ scrollToSection }) => {
-const AddressBlock = () => (
-  <div className={styles.addressBlock}>
-    <span className={styles.addressTitle}>Место проведения:</span>
-    <br />
-    Дом-музей М.С. Щепкина
-    <br />
-    Адрес: ул. Щепкина, 47, стр. 2, Москва
-    <br />
-    (ст. м. Проспект Мира)
-    <br />
-    <br />
-    Музей-мастерская Д. Боровского
-    <br />
-    Адрес: Москва, Б. Афанасьевский переулок, д. 3, стр. 3
-    <br />
-    (ст. м. Кропоткинская)
-  </div>
-);
+const Footer: React.FC<FooterProps> = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleMonthClick = (monthIndex: number) => {
+    const anchorId = GRID_MONTH_ANCHOR_IDS[monthIndex];
+    if (!anchorId) return;
+
+    if (location.pathname === "/") {
+      document.getElementById(anchorId)?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+      return;
+    }
+
+    navigate(`/#${anchorId}`);
+  };
+
+  const handleContactsClick = () => {
+    if (location.pathname !== "/Contacts") {
+      navigate("/Contacts");
+    }
+  };
+
+  const AddressBlock = () => (
+    <div className={styles.addressBlock}>
+      <div className={styles.addressItem}>
+        <img src={search} alt="Локация" />
+        <span>
+          Мемориальный музей «Творческая мастерская театрального художника Давида Боровского»
+          Адрес: Москва, Б. Афанасьевский переулок, д. 3, стр. 3 (ст. м. Кропоткинская)
+        </span>
+      </div>
+      <div className={styles.addressItem}>
+        <img src={search} alt="Локация" />
+        <span>Дом-музей М.С. Щепкина</span>
+      </div>
+    </div>
+  );
 
   const PhonesBlock = () => (
-    <div className={styles.telephone}>
-      <img src={phone} alt="Телефон" />
-      <div className={styles.col}>
-        <a href="tel:+74994847777">+7 499 484-77-77</a>
-        <a href="tel:+79636594088">+7 963 659-40-88</a>
+    <div className={styles.phoneBlock}>
+      <div className={styles.telephone}>
+        <img src={phone} alt="Телефон" />
+        <div className={styles.col}>
+          <a href="tel:+74994847777">+7 499 484-77-77</a>
+          <a href="tel:+79636594088">+7 963 659-40-88</a>
+        </div>
       </div>
+      <a
+        className={styles.ticketBtn}
+        href="https://www.bakhrushinmuseum.ru/buy-tickets/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        КУПИТЬ БИЛЕТ
+      </a>
     </div>
   );
 
@@ -75,13 +107,13 @@ const AddressBlock = () => (
     <div className={styles.partners}>
       <div className={styles.partnerLogos}>
         <a
-          href="https://afisha.yandex.ru/moscow/selections/kids-art-summer-in-the-bakhrushinsky-museum?city=moscow&source=rubric_kids_featured"
+          href="https://www.osd.ru/newsinf.asp?nw=23556"
           target="_blank"
           rel="noopener noreferrer"
         >
           <img
-            src={partnerYandexAfishaLogo}
-            alt="Яндекс Афиша"
+            src={partnerOsdLogo}
+            alt="Партнёр 3 — ОСД"
           />
         </a>
         <a
@@ -95,53 +127,53 @@ const AddressBlock = () => (
           />
         </a>
         <a
-          href="https://www.osd.ru/newsinf.asp?nw=23556"
+          href="https://afisha.yandex.ru/moscow/selections/kids-art-summer-in-the-bakhrushinsky-museum?city=moscow&source=rubric_kids_featured"
           target="_blank"
           rel="noopener noreferrer"
         >
           <img
-            src={partnerOsdLogo}
-            alt="Партнёр 3 — ОСД"
+            src={partnerYandexAfishaLogo}
+            alt="Яндекс Афиша"
           />
         </a>
       </div>
     </div>
   );
 
+  const MonthNav = () => (
+    <nav className={styles.monthNav} aria-label="Навигация по разделам">
+      <button type="button" onClick={() => handleMonthClick(0)}>
+        ИЮНЬ
+      </button>
+      <button type="button" onClick={() => handleMonthClick(1)}>
+        ИЮЛЬ
+      </button>
+      <button type="button" onClick={() => handleMonthClick(2)}>
+        АВГУСТ
+      </button>
+      <button type="button" onClick={handleContactsClick}>
+        КОНТАКТЫ
+      </button>
+    </nav>
+  );
+
   return (
     <div className={styles.root}>
-      
-      {isMobile && (
-        <div className={styles.mobilePanel}>
-          
-        </div>
-      )}
-
       <div className={styles.top}>
-        {/* Логотип + телефоны (мобильная укладка) */}
-        {isMobile ? (
-          <div className={styles.mobileMMM}>
-            <a href="https://bakhrushinmuseum.ru" target="_blank" rel="noopener noreferrer">
-              <img src={logo} alt="Бахрушинский музей" className={styles.logo} />
-            </a>
-            <PhonesBlock />
-          </div>
-        ) : (
+        <div className={styles.contacts}>
+          <AddressBlock />
+        </div>
+
+        <div className={styles.centerBlock}>
           <a href="https://bakhrushinmuseum.ru" target="_blank" rel="noopener noreferrer">
             <img src={logo} alt="Бахрушинский музей" className={styles.logo} />
           </a>
-        )}
-
-        {/* Адрес */}
-        <div className={styles.contacts}>
-          <div className={styles.first}>
-            <img src={search} alt="Поиск на карте" />
-            <AddressBlock />
-          </div>
+          <MonthNav />
         </div>
 
-        {/* Телефоны (десктоп) */}
-        {!isMobile && <PhonesBlock />}
+        <div className={styles.rightBlock}>
+          <PhonesBlock />
+        </div>
       </div>
 
       <div className={styles.bottom}>

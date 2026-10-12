@@ -55,14 +55,11 @@ const WorkshopDetailPage: React.FC<WorkshopDetailConfig> = ({
   imageDateBadge,
   venueKey,
   ageRating,
-  useCycleMeetingTitle,
   descriptionParagraphs,
 }) => {
   const navigate = useNavigate();
   const venueAddress = getVenueAddress(venueKey);
-  const headingTitle = useCycleMeetingTitle
-    ? `ЦИКЛ ВСТРЕЧ "${title}"`
-    : `«${title}»`;
+  const headingTitle = `«${title}»`;
 
   const handleBuyTicket = () =>
     window.open(ticketUrl, '_blank', 'noopener,noreferrer');

@@ -6,7 +6,7 @@ import phone from '../../static/icons/phone.svg';
 import rt from '../../static/icons/rt.svg';
 import tg from '../../static/icons/tg.svg';
 import vk from '../../static/icons/vk.svg';
-import logo from '../../static/images/BTM.svg';
+import logo from '../../static/images/BTM-mark-burgundy.svg';
 import styles from './Header.module.scss';
 import { GRID_MONTH_ANCHOR_IDS } from '../Grid/Grid';
 

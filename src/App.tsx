@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { isMobile } from 'react-device-detect';
 import styles from './App.module.scss';
 import Footer from './components/Footer/Footer';
@@ -83,6 +83,17 @@ const MainContent = () => {
   const getEventsForMonth = (events: IEvent[], _monthIndex: number) => {
     return events;
   };
+
+  useEffect(() => {
+    const hash = window.location.hash?.replace('#', '');
+    if (!hash) return;
+    requestAnimationFrame(() => {
+      document.getElementById(hash)?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
+    });
+  }, []);
 
   return (
     <>
